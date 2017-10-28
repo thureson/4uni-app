@@ -10,6 +10,8 @@ export class Chat extends React.Component {
                         style={{height: 40}}
                         placeholder="Type something here!"
                         onChangeText={(text) => this.setState({text})} />  
+                        
+                    {/* Test-stuff */}
                     <Text style={styles.messageContainer}>test</Text>
                     <Text style={styles.messageContainer}>test</Text>
                     <Text style={styles.messageContainer}>test</Text>
