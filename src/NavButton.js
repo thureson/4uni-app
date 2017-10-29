@@ -5,7 +5,7 @@ export class NavButton extends React.Component {
     render() {
         return (
           <TouchableOpacity style={{flex: 1, backgroundColor: this.props.backcolor}} onPress={this.props.onButtonPress}>
-            <View style={styles.buttonContainer}>
+            <View style={styles.buttonText}>
               <Text>{this.props.texts}</Text>
             </View>
           </TouchableOpacity>
@@ -14,7 +14,7 @@ export class NavButton extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    buttonContainer: {
+    buttonText: {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',

@@ -1,50 +1,59 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, TextInput } from 'react-native';
-import {NavBar} from './classes/NavBar.js';
-import {Chat} from './classes/Chat.js';
+import {NavBar} from './src/NavBar.js';
+import {Content} from './src/Content.js';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { page: 'Home' };
+    this.state = { page: 'home' };
     this._onHomeButtonPress = this._onHomeButtonPress.bind(this);
     this._onEventsButtonPress = this._onEventsButtonPress.bind(this);
     this._onNoticesButtonPress = this._onNoticesButtonPress.bind(this);
     this._onHoasButtonPress = this._onHoasButtonPress.bind(this);
   }
   _onHomeButtonPress() {
-    this.setState({page: 'Home'});
+    this.setState({page: 'home'});
   }
 
   _onEventsButtonPress() {
-    this.setState({page: 'Events'});
+    this.setState({page: 'events'});
   }
 
   _onNoticesButtonPress() {
-    this.setState({page: 'Notices'});
+    this.setState({page: 'notices'});
   }
 
   _onHoasButtonPress() {
-    this.setState({page: 'Hoas'});
+    this.setState({page: 'hoas'});
   }
 
   render() {
     return (
       <View style={{flex: 1}}>
-        <View style={{flex: 1, backgroundColor: 'skyblue'}}>
+
+        {/* Phone's own info-space */}
+        <View style={{flex: 0.3, backgroundColor: 'skyblue'}}></View>
+
+        {/* Header */}
+        <View style={{flex: 0.6, backgroundColor: 'ghostwhite'}}>
           <View style={styles.container}>
             <Text style={styles.logo} >{this.state.page}</Text>
           </View>
         </View>
 
-        {/* View-content */}
-        <Chat />
+        {/* Page-content */}
+        <View style={{flex: 5.6}}>
+            <Content page={this.state.page}/>
+        </View>
         
         {/* Navigator on bottom screen */}
-        <NavBar onHomeButtonPress={this._onHomeButtonPress} 
-                onEventsButtonPress={this._onEventsButtonPress} 
-                onNoticesButtonPress={this._onNoticesButtonPress} 
-                onHoasButtonPress={this._onHoasButtonPress} />
+        <View style={{flex: 1}}>
+          <NavBar onHomeButtonPress={this._onHomeButtonPress} 
+                  onEventsButtonPress={this._onEventsButtonPress} 
+                  onNoticesButtonPress={this._onNoticesButtonPress} 
+                  onHoasButtonPress={this._onHoasButtonPress} />
+        </View>
       </View>
     );
   }
