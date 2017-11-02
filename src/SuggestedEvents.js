@@ -5,7 +5,7 @@ import {Event} from './Event.js'
 export class SuggestedEvents extends React.Component {
     render() {
         return (
-            <View style={{flex: 5, backgroundColor: 'white'}}>
+            <View style={{flex: 5, backgroundColor: 'white', paddingTop: 1}}>
                 <ScrollView>                  
 
                     {/* Test-stuff */}
