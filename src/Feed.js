@@ -10,6 +10,13 @@ export class Feed extends React.Component {
     render() {
         return (
             <View style={{flex: 5, backgroundColor: 'ghostwhite'}}>
+                {/* Header */}
+                <View style={{flex: 0.107, backgroundColor: 'ghostwhite'}}>
+                    <View style={styles.container}>
+                      <Text style={styles.logo} >Feed</Text>
+                    </View>
+                </View>
+
                 <ScrollView>                  
                     <View style={{alignItems: 'center'}}>
                         <TextInput
@@ -51,4 +58,13 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      logo: {
+        fontSize: 22,
+        fontWeight: 'bold',
+      },
   });

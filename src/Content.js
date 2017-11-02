@@ -9,13 +9,13 @@ export class Content extends React.Component {
 
     content() {
         switch(this.props.page) {
-            case 'home':
+            case 'Feed':
                 return <Feed />
-            case 'events':
+            case 'Events':
                 return <Events /> 
-            case 'reservations':
+            case 'Reservations':
                 return <Reservations />
-            case 'official':
+            case 'Official':
                 return <Official />
             default:
                 return <Feed />         

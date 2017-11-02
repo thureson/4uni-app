@@ -6,26 +6,26 @@ import {Content} from './src/Content.js';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { page: 'home' };
+    this.state = { page: 'Feed' };
     this._onHomeButtonPress = this._onHomeButtonPress.bind(this);
     this._onEventsButtonPress = this._onEventsButtonPress.bind(this);
     this._onReservationsButtonPress = this._onReservationsButtonPress.bind(this);
     this._onOfficialButtonPress = this._onOfficialButtonPress.bind(this);
   }
   _onHomeButtonPress() {
-    this.setState({page: 'home'});
+    this.setState({page: 'Feed'});
   }
 
   _onEventsButtonPress() {
-    this.setState({page: 'events'});
+    this.setState({page: 'Events'});
   }
 
   _onReservationsButtonPress() {
-    this.setState({page: 'reservations'});
+    this.setState({page: 'Reservations'});
   }
 
   _onOfficialButtonPress() {
-    this.setState({page: 'official'});
+    this.setState({page: 'Official'});
   }
 
   render() {
@@ -35,15 +35,15 @@ export default class App extends React.Component {
         {/* Phone's own info-space */}
         <View style={{flex: 0.3, backgroundColor: 'skyblue'}}></View>
 
-        {/* Header */}
+        {/* Header
         <View style={{flex: 0.6, backgroundColor: 'ghostwhite'}}>
           <View style={styles.container}>
             <Text style={styles.logo} >{this.state.page}</Text>
           </View>
-        </View>
+        </View>*/}
 
         {/* Page-content */}
-        <View style={{flex: 5.6}}>
+        <View style={{flex: 6.2}}>
             <Content page={this.state.page}/>
         </View>
         

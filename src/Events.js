@@ -1,16 +1,19 @@
 import React from 'react';
-import {ScrollView, Text, View, StyleSheet} from 'react-native';
-import {SuggestedEvents} from './SuggestedEvents.js'
+import {SuggestedEvents} from './SuggestedEvents.js';
+import {UpcomingEvents} from './UpcomingEvents.js';
 
 export class Events extends React.Component {   
     constructor(props) {
         super(props);
-        this.state = { view: "suggestedEvents" };
+        this.state = { upcoming: true };
+        this.changeView = this.changeView.bind(this);
+    }
+
+    changeView() {
+        this.setState({ upcoming: !this.state.upcoming });
     }
 
     render() {
-        return (
-            <SuggestedEvents />
-        );
+        return this.state.upcoming ? <UpcomingEvents changeView={this.changeView} /> : <SuggestedEvents />
     }
 }
