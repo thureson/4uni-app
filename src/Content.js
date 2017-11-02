@@ -2,6 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 import {Feed} from './Feed.js';
 import {Events} from './Events.js';
+import {Reservations} from './Reservations.js';
 
 export class Content extends React.Component {
 
@@ -11,6 +12,8 @@ export class Content extends React.Component {
                 return <Feed />
             case 'events':
                 return <Events /> 
+            case 'reservations':
+                return <Reservations />
             default:
                 return <Feed />         
         }

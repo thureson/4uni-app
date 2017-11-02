@@ -1,6 +1,7 @@
 import React from 'react';
 import {ScrollView, Text, TextInput, View, StyleSheet} from 'react-native';
 
+{/* TODO */}
 function getMessagesFromMongo() {
     return fetch()
 }

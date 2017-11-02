@@ -1,36 +1,16 @@
 import React from 'react';
 import {ScrollView, Text, View, StyleSheet} from 'react-native';
-import {Event} from './Event.js'
+import {SuggestedEvents} from './SuggestedEvents.js'
 
-export class Events extends React.Component {
+export class Events extends React.Component {   
+    constructor(props) {
+        super(props);
+        this.state = { view: "suggestedEvents" };
+    }
+
     render() {
         return (
-            <View style={{flex: 5, backgroundColor: 'white'}}>
-                <ScrollView>                  
-
-                    {/* Test-stuff */}
-                    <Event text="Pizza-night" time="18:00" date="31.10"/>
-                    <Event text="Bowling!" time="14:00" date="04.11"/>
-                    <Event text="A Picnic?" time="12:00" date="06.11"/>
-                    <Event text="Pizza-night" time="18:00" date="31.10"/>
-                    <Event text="Bowling!" time="14:00" date="04.11"/>
-                    <Event text="A Picnic?" time="12:00" date="06.11"/>
-                    <Event text="Pizza-night" time="18:00" date="31.10"/>
-                    <Event text="Bowling!" time="14:00" date="04.11"/>
-                    <Event text="A Picnic?" time="12:00" date="06.11"/>
-                    <Event text="Pizza-night" time="18:00" date="31.10"/>
-                    <Event text="Bowling!" time="14:00" date="04.11"/>
-                    <Event text="A Picnic?" time="12:00" date="06.11"/>
-                </ScrollView>
-            </View>
+            <SuggestedEvents />
         );
     }
 }
-
-const styles = StyleSheet.create({
-    messageContainer: {
-      height: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-  });
