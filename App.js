@@ -9,8 +9,8 @@ export default class App extends React.Component {
     this.state = { page: 'home' };
     this._onHomeButtonPress = this._onHomeButtonPress.bind(this);
     this._onEventsButtonPress = this._onEventsButtonPress.bind(this);
-    this._onNoticesButtonPress = this._onNoticesButtonPress.bind(this);
-    this._onHoasButtonPress = this._onHoasButtonPress.bind(this);
+    this._onReservationsButtonPress = this._onReservationsButtonPress.bind(this);
+    this._onOfficialButtonPress = this._onOfficialButtonPress.bind(this);
   }
   _onHomeButtonPress() {
     this.setState({page: 'home'});
@@ -20,12 +20,12 @@ export default class App extends React.Component {
     this.setState({page: 'events'});
   }
 
-  _onNoticesButtonPress() {
-    this.setState({page: 'notices'});
+  _onReservationsButtonPress() {
+    this.setState({page: 'reservations'});
   }
 
-  _onHoasButtonPress() {
-    this.setState({page: 'hoas'});
+  _onOfficialButtonPress() {
+    this.setState({page: 'official'});
   }
 
   render() {
@@ -51,8 +51,8 @@ export default class App extends React.Component {
         <View style={{flex: 1}}>
           <NavBar onHomeButtonPress={this._onHomeButtonPress} 
                   onEventsButtonPress={this._onEventsButtonPress} 
-                  onNoticesButtonPress={this._onNoticesButtonPress} 
-                  onHoasButtonPress={this._onHoasButtonPress} />
+                  onReservationsButtonPress={this._onReservationsButtonPress} 
+                  onOfficialButtonPress={this._onOfficialButtonPress} />
         </View>
       </View>
     );

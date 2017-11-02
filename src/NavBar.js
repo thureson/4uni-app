@@ -8,8 +8,8 @@ export class NavBar extends React.Component {
         <View style={{flex: 1, flexDirection: 'row', backgroundColor: 'steelblue'}}>
           <NavButton onButtonPress={this.props.onHomeButtonPress} backcolor='powderblue' texts='Home' />
           <NavButton onButtonPress={this.props.onEventsButtonPress} backcolor='skyblue' texts='Events' />
-          <NavButton onButtonPress={this.props.onNoticesButtonPress} backcolor='powderblue' texts='Notices' />
-          <NavButton onButtonPress={this.props.onHoasButtonPress} backcolor='skyblue' texts='Hoas' />
+          <NavButton onButtonPress={this.props.onReservationsButtonPress} backcolor='powderblue' texts='Reserve' />
+          <NavButton onButtonPress={this.props.onOfficialButtonPress} backcolor='skyblue' texts='Official' />
         </View>
         )
     }

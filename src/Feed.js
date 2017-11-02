@@ -5,7 +5,7 @@ function getMessagesFromMongo() {
     return fetch()
 }
 
-export class Chat extends React.Component {
+export class Feed extends React.Component {
     render() {
         return (
             <View style={{flex: 5, backgroundColor: 'ghostwhite'}}>
