@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import {RootforButton} from './RootforButton.js';
+import {ReserveButton} from './ReserveButton.js';
 
 export class Item extends React.Component {
     render() {
@@ -8,8 +8,8 @@ export class Item extends React.Component {
             <View style={styles.eventContainer}>
                <Text style={{flex: 3, marginLeft: 15}}>{this.props.name}</Text>
                <Text style={{flex: 1, marginLeft: 15}}>{this.props.until}</Text>
-               <Text style={{flex: 1, marginLeft: 15}}>{this.props.reserved}</Text>
-               <RootforButton />
+               <Text style={{flex: 1, marginLeft: 15}}></Text>
+               <ReserveButton reserved={this.props.reserved} />
             </View>
         );
     }

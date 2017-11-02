@@ -9,15 +9,9 @@ export class Reservations extends React.Component {
                 <ScrollView>                  
 
                     {/* Test-stuff */}
-                    <Item name="Dancing Shoes" until="21.11" reserved="reserved"/>
-                    <Item name="Bowling Ball" until="" reserved="available"/>
-                    <Item name="PS4" until="06.11" reserved="reserved"/>
-                    <Item name="Dancing Shoes" until="21.11" reserved="reserved"/>
-                    <Item name="Bowling Ball" until="" reserved="available"/>
-                    <Item name="PS4" until="06.11" reserved="reserved"/>
-                    <Item name="Dancing Shoes" until="21.11" reserved="reserved"/>
-                    <Item name="Bowling Ball" until="" reserved="available"/>
-                    <Item name="PS4" until="06.11" reserved="reserved"/>
+                    <Item name="Dancing Shoes" until="21.11" reserved={true}/>
+                    <Item name="Bowling Ball" until="" reserved={false}/>
+                    <Item name="PS4" until="06.11" reserved={true}/>
                 </ScrollView>
             </View>
         );
