@@ -9,21 +9,18 @@ export class Events extends React.Component {
                 <ScrollView>                  
 
                     {/* Test-stuff */}
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-                    <Event text="Pizza-night klo 18, 31.10.2017"/>
-
+                    <Event text="Pizza-night" time="18:00" date="31.10"/>
+                    <Event text="Bowling!" time="14:00" date="04.11"/>
+                    <Event text="A Picnic?" time="12:00" date="06.11"/>
+                    <Event text="Pizza-night" time="18:00" date="31.10"/>
+                    <Event text="Bowling!" time="14:00" date="04.11"/>
+                    <Event text="A Picnic?" time="12:00" date="06.11"/>
+                    <Event text="Pizza-night" time="18:00" date="31.10"/>
+                    <Event text="Bowling!" time="14:00" date="04.11"/>
+                    <Event text="A Picnic?" time="12:00" date="06.11"/>
+                    <Event text="Pizza-night" time="18:00" date="31.10"/>
+                    <Event text="Bowling!" time="14:00" date="04.11"/>
+                    <Event text="A Picnic?" time="12:00" date="06.11"/>
                 </ScrollView>
             </View>
         );
