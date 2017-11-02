@@ -21,8 +21,11 @@ export class UpcomingEvents extends React.Component {
                     <UpcomingEvent text="Official Picnic!" time="12:00" date="06.11"/>
 
                     {/* Temporary "change view" -button */}
-                    <TouchableOpacity style={{ height: 40, width: 40, backgroundColor: 'yellow' }} onPress={this.props.changeView}>
-                        <Text>I am temporary!</Text>
+                    <TouchableOpacity style={{ height: 50, width: 50, backgroundColor: 'yellow' }} onPress={this.props.changeView}>
+                        <Text>
+                            I am temp!
+                            Press me!
+                        </Text>
                     </TouchableOpacity>
 
                 </ScrollView>
