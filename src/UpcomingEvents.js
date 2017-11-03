@@ -1,8 +1,16 @@
 import React from 'react';
-import { ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { ScrollView, Text, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
 import { UpcomingEvent } from './UpcomingEvent.js'
 
 export class UpcomingEvents extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    renderRow(event) {
+        return <UpcomingEvent text={event.name} time="15:00" date="31.10" />;
+    }
+
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 1 }}>
@@ -19,14 +27,20 @@ export class UpcomingEvents extends React.Component {
                     </View>
                 </View>
 
+                <FlatList
+                    data={this.props.events}
+                    renderItem={({item}) => this.renderRow(item)}
+                    keyExtractor={(item) => item._id}
+                />
+                {/*
                 <ScrollView>
 
-                    {/* Test-stuff */}
                     <UpcomingEvent text="Official Pizza-night!" time="18:00" date="31.10" />
                     <UpcomingEvent text="Official Bowling!" time="14:00" date="04.11" />
                     <UpcomingEvent text="Official Picnic!" time="12:00" date="06.11" />
 
                 </ScrollView>
+                */}
             </View>
         );
     }

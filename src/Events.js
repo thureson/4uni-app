@@ -16,13 +16,15 @@ export class Events extends React.Component {
         this.changeView = this.changeView.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         fetch(api)
             .then((response) => response.json())
             .then((responseJson) => {
                 var parsedEvents = eventParser(responseJson);
-                this.state.upcomingEvents = parsedEvents.upcomingEvents;
-                this.state.suggestedEvents = parsedEvents.suggestedEvents;
+                this.setState({
+                    upcomingEvents: parsedEvents.upcomingEvents,
+                    suggestedEvents: parsedEvents.suggestedEvents
+                });
                 console.log("Upcoming events:")
                 console.log(this.state.upcomingEvents);
                 console.log("--------------------")
