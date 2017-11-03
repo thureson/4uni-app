@@ -1,17 +1,19 @@
 import React from 'react';
-import { ScrollView, Text, View, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { ScrollView, Text, View, StyleSheet, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { UpcomingEvent } from './UpcomingEvent.js'
 
 export class UpcomingEvents extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     renderRow(event) {
         return <UpcomingEvent text={event.name} time="15:00" date="31.10" />;
     }
 
     render() {
+        let loading;
+        if (this.props.events.length < 1) {
+            loading = (
+                <ActivityIndicator size="large" />
+            );
+        }
         return (
             <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 1 }}>
                 {/* Header */}
@@ -27,10 +29,12 @@ export class UpcomingEvents extends React.Component {
                     </View>
                 </View>
 
+                {loading}
+
                 <FlatList
                     data={this.props.events}
                     renderItem={({item}) => this.renderRow(item)}
-                    keyExtractor={(item) => item._id}
+                    keyExtractor={(item, index) => index}
                 />
                 {/*
                 <ScrollView>

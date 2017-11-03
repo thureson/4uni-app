@@ -16,7 +16,7 @@ export class Events extends React.Component {
         this.changeView = this.changeView.bind(this);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         fetch(api)
             .then((response) => response.json())
             .then((responseJson) => {
