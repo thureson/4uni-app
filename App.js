@@ -7,25 +7,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { page: 'Feed' };
-    this._onHomeButtonPress = this._onHomeButtonPress.bind(this);
-    this._onEventsButtonPress = this._onEventsButtonPress.bind(this);
-    this._onReservationsButtonPress = this._onReservationsButtonPress.bind(this);
-    this._onOfficialButtonPress = this._onOfficialButtonPress.bind(this);
-  }
-  _onHomeButtonPress() {
-    this.setState({page: 'Feed'});
+    this._handleButtonPress = this._handleButtonPress.bind(this);
   }
 
-  _onEventsButtonPress() {
-    this.setState({page: 'Events'});
-  }
-
-  _onReservationsButtonPress() {
-    this.setState({page: 'Reservations'});
-  }
-
-  _onOfficialButtonPress() {
-    this.setState({page: 'Official'});
+  _handleButtonPress(page) {
+    this.setState({page: page});
   }
 
   render() {
@@ -49,10 +35,10 @@ export default class App extends React.Component {
         
         {/* Navigator on bottom screen */}
         <View style={{flex: 1}}>
-          <NavBar onHomeButtonPress={this._onHomeButtonPress} 
-                  onEventsButtonPress={this._onEventsButtonPress} 
-                  onReservationsButtonPress={this._onReservationsButtonPress} 
-                  onOfficialButtonPress={this._onOfficialButtonPress} />
+          <NavBar onHomeButtonPress={() => this._handleButtonPress("Feed")} 
+                  onEventsButtonPress={() => this._handleButtonPress("Events")} 
+                  onReservationsButtonPress={() => this._handleButtonPress("Reservations")} 
+                  onOfficialButtonPress={() => this._handleButtonPress("Official")} />
         </View>
       </View>
     );
