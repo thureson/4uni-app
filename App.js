@@ -21,13 +21,6 @@ export default class App extends React.Component {
         {/* Phone's own info-space */}
         <View style={{flex: 0.3, backgroundColor: 'skyblue'}}></View>
 
-        {/* Header
-        <View style={{flex: 0.6, backgroundColor: 'ghostwhite'}}>
-          <View style={styles.container}>
-            <Text style={styles.logo} >{this.state.page}</Text>
-          </View>
-        </View>*/}
-
         {/* Page-content */}
         <View style={{flex: 6.2}}>
             <Content page={this.state.page}/>

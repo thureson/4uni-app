@@ -41,8 +41,8 @@ export class Events extends React.Component {
     render() {
         let pageToShow;
         this.state.upcoming ?
-            pageToShow = <UpcomingEvents onPress={this.changeView} /> :
-            pageToShow = <SuggestedEvents onPress={this.changeView} />
+            pageToShow = <UpcomingEvents onPress={this.changeView} events={this.state.upcomingEvents} /> :
+            pageToShow = <SuggestedEvents onPress={this.changeView} events={this.state.suggestedEvents} />
 
         return (
             <View style={{ flex: 1 }}>
