@@ -1,32 +1,30 @@
 import React from 'react';
-import {ScrollView, Text, View, StyleSheet, TouchableOpacity} from 'react-native';
-import {UpcomingEvent} from './UpcomingEvent.js'
+import { ScrollView, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { UpcomingEvent } from './UpcomingEvent.js'
 
 export class UpcomingEvents extends React.Component {
     render() {
         return (
-            <View style={{flex: 1, backgroundColor: 'white', paddingTop: 1}}>
+            <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 1 }}>
                 {/* Header */}
-                <View style={{flex: 0.107, backgroundColor: 'ghostwhite'}}>
+                <View style={{ flex: 0.107, backgroundColor: 'ghostwhite', flexDirection: "row" }}>
                     <View style={styles.container}>
-                      <Text style={styles.logo} >Upcoming Events</Text>                     
+                        <Text style={styles.logo} >Upcoming Events</Text>
+                        <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
+                            <Text>
+                                I am temp!
+                            Press me!
+                                </Text>
+                        </TouchableOpacity>
                     </View>
-                </View>       
+                </View>
 
-                <ScrollView>                  
+                <ScrollView>
 
                     {/* Test-stuff */}
-                    <UpcomingEvent text="Official Pizza-night!" time="18:00" date="31.10"/>
-                    <UpcomingEvent text="Official Bowling!" time="14:00" date="04.11"/>
-                    <UpcomingEvent text="Official Picnic!" time="12:00" date="06.11"/>
-
-                    {/* Temporary "change view" -button */}
-                    <TouchableOpacity style={{ height: 50, width: 50, backgroundColor: 'yellow' }} onPress={this.props.changeView}>
-                        <Text>
-                            I am temp!
-                            Press me!
-                        </Text>
-                    </TouchableOpacity>
+                    <UpcomingEvent text="Official Pizza-night!" time="18:00" date="31.10" />
+                    <UpcomingEvent text="Official Bowling!" time="14:00" date="04.11" />
+                    <UpcomingEvent text="Official Picnic!" time="12:00" date="06.11" />
 
                 </ScrollView>
             </View>
@@ -36,17 +34,24 @@ export class UpcomingEvents extends React.Component {
 
 const styles = StyleSheet.create({
     messageContainer: {
-      height: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-      },
-      logo: {
+        flexDirection: "row"
+    },
+    logo: {
         fontSize: 22,
         fontWeight: 'bold',
-      },
-  });
+    },
+    button: {
+        alignSelf: "flex-end",
+        height: 50,
+        width: 50,
+        backgroundColor: "yellow"
+    }
+});

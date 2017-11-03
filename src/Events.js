@@ -1,8 +1,9 @@
 import React from 'react';
-import {SuggestedEvents} from './SuggestedEvents.js';
-import {UpcomingEvents} from './UpcomingEvents.js';
+import { View, Text } from "react-native";
+import { SuggestedEvents } from './SuggestedEvents.js';
+import { UpcomingEvents } from './UpcomingEvents.js';
 
-export class Events extends React.Component {   
+export class Events extends React.Component {
     constructor(props) {
         super(props);
         this.state = { upcoming: true };
@@ -14,6 +15,15 @@ export class Events extends React.Component {
     }
 
     render() {
-        return this.state.upcoming ? <UpcomingEvents changeView={this.changeView} /> : <SuggestedEvents />
+        let pageToShow;
+        this.state.upcoming ? 
+        pageToShow = <UpcomingEvents onPress={this.changeView}/> : 
+        pageToShow = <SuggestedEvents onPress={this.changeView}/>
+
+        return (
+            <View style={{flex: 1}}>
+                {pageToShow}
+            </View>
+        );
     }
 }
