@@ -21,10 +21,7 @@ export class UpcomingEvents extends React.Component {
                     <View style={styles.container}>
                         <Text style={styles.logo} >Upcoming Events</Text>
                         <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-                            <Text>
-                                I am temp!
-                            Press me!
-                                </Text>
+                            <Text>change</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -59,17 +56,22 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         flexDirection: "row"
     },
     logo: {
         fontSize: 22,
         fontWeight: 'bold',
+        marginLeft: 10
     },
     button: {
-        alignSelf: "flex-end",
-        height: 50,
-        width: 50,
-        backgroundColor: "yellow"
+        height: 30,
+        width: "auto",
+        backgroundColor: "yellow",
+        borderRadius: 3,
+        borderWidth: 0.5,
+        borderColor: "black",
+        padding: 5,
+        marginRight: 5
     }
 });
