@@ -1,5 +1,5 @@
 ﻿/* Insert pöhinä */ <br />
-[Checkout our database](https://my-database.herokuapp.com/api/events) <br />
+[Checkout the database](https://my-database.herokuapp.com/api/events) <br />
 <br />
 <br />
 BUGS: <br />
