@@ -33,15 +33,6 @@ export class UpcomingEvents extends React.Component {
                     renderItem={({item}) => this.renderRow(item)}
                     keyExtractor={(item, index) => index}
                 />
-                {/*
-                <ScrollView>
-
-                    <UpcomingEvent text="Official Pizza-night!" time="18:00" date="31.10" />
-                    <UpcomingEvent text="Official Bowling!" time="14:00" date="04.11" />
-                    <UpcomingEvent text="Official Picnic!" time="12:00" date="06.11" />
-
-                </ScrollView>
-                */}
             </View>
         );
     }

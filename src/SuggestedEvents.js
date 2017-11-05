@@ -39,22 +39,6 @@ export class SuggestedEvents extends React.Component {
                     renderItem={({item}) => this.renderRow(item)}
                     keyExtractor={(item, index) => index}
                 />
-
-                {/*<ScrollView>
-
-                    <Event text="Pizza-night" time="18:00" date="31.10" />
-                    <Event text="Bowling!" time="14:00" date="04.11" />
-                    <Event text="A Picnic?" time="12:00" date="06.11" />
-                    <Event text="Pizza-night" time="18:00" date="31.10" />
-                    <Event text="Bowling!" time="14:00" date="04.11" />
-                    <Event text="A Picnic?" time="12:00" date="06.11" />
-                    <Event text="Pizza-night" time="18:00" date="31.10" />
-                    <Event text="Bowling!" time="14:00" date="04.11" />
-                    <Event text="A Picnic?" time="12:00" date="06.11" />
-                    <Event text="Pizza-night" time="18:00" date="31.10" />
-                    <Event text="Bowling!" time="14:00" date="04.11" />
-                    <Event text="A Picnic?" time="12:00" date="06.11" />
-                </ScrollView>*/}
             </View>
         );
     }
