@@ -8,7 +8,7 @@ export class RootforButton extends React.Component {
         this.increase = this.increase.bind(this);
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.state.roots = this.props.roots;
     }
 
