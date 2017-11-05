@@ -31,47 +31,54 @@ export class CreateEvent extends React.Component {
     render() {
         return (
             <View>
-
                 <View style={styles.container}>
                     <View style={styles.inputAreaContainer} >
-                        {/* 'title' is 'name' in db */}  
+                        {/* 'title' is 'name' in db */}
                         <TextInput
                             style={styles.inputBoxOneRow}
                             placeholder="Title:"
-                            onChangeText={(text) => this.setState({title: text})} />
+                            onChangeText={(text) => this.setState({ title: text })} />
 
                         <TextInput
                             style={styles.inputBoxMultiRow}
                             placeholder="Description:"
                             multiline
-                            onChangeText={(text) => this.setState({description: text})} />
+                            onChangeText={(text) => this.setState({ description: text })} />
 
                         <TextInput
                             style={styles.inputBoxOneRow}
                             placeholder="Place:"
-                            onChangeText={(text) => this.setState({place: text})} />
+                            onChangeText={(text) => this.setState({ place: text })} />
 
                         <TextInput
                             style={styles.inputBoxOneRow}
                             placeholder="Date:"
-                            onChangeText={(text) => this.setState({date: text})} />
+                            onChangeText={(text) => this.setState({ date: text })} />
 
                         <TextInput
                             style={styles.inputBoxOneRow}
                             placeholder="Time:"
-                            onChangeText={(text) => this.setState({time: text})} />
+                            onChangeText={(text) => this.setState({ time: text })} />
 
                         <TextInput
                             style={styles.inputBoxOneRow}
                             placeholder="Budget:"
-                            onChangeText={(text) => this.setState({budget: text})} />
+                            onChangeText={(text) => this.setState({ budget: text })} />
 
-                        <TouchableOpacity 
+                        <TouchableOpacity
                             style={styles.submitButton}
                             onPress={this.handleSubmit}>
-                            
+
                             <Text style={styles.submitText}>
                                 Submit
+                            </Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.goBackButton}
+                            onPress={this.props.onPress}>
+                            <Text style={styles.submitText}>
+                                Go Back
                             </Text>
                         </TouchableOpacity>
                     </View>
@@ -118,7 +125,15 @@ const styles = StyleSheet.create({
         width: 80,
         backgroundColor: 'green',
         alignItems: 'center',
-        justifyContent: 'center',      
+        justifyContent: 'center',
+    },
+    goBackButton: {
+        height: 40,
+        width: 80,
+        backgroundColor: 'grey',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 50
     },
     submitText: {
         fontWeight: 'bold',

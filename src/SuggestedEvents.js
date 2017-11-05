@@ -1,15 +1,30 @@
 import React from 'react';
 import { ScrollView, Text, View, StyleSheet, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { Event } from './Event.js'
+import { CreateEvent } from "./CreateEvent";
 
 export class SuggestedEvents extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            showForm: false
+        }
+        this.changeView = this.changeView.bind(this);
+    }
+
+    changeView() {
+        this.setState({
+            showForm: !this.state.showForm
+        });
+    }
+
     renderRow(event) {
         return <Event text={event.name}
-                      time={event.time}
-                      date={event.date}
-                      id={event._id}
-                      roots={event.roots}
-                      />;
+            time={event.time}
+            date={event.date}
+            id={event._id}
+            roots={event.roots}
+        />;
     }
 
     render() {
@@ -18,6 +33,10 @@ export class SuggestedEvents extends React.Component {
             loading = (
                 <ActivityIndicator size="large" />
             );
+        }
+
+        if (this.state.showForm) {
+            return <CreateEvent onPress={this.changeView} />;
         }
 
         return (
@@ -33,6 +52,9 @@ export class SuggestedEvents extends React.Component {
                 </View>
 
                 {loading}
+                <TouchableOpacity style={styles.createButton} onPress={this.changeView}>
+                    <Text>Create an event</Text>
+                </TouchableOpacity>
 
                 <FlatList
                     data={this.props.events}
@@ -70,5 +92,18 @@ const styles = StyleSheet.create({
         borderColor: "black",
         padding: 5,
         marginRight: 5
+    },
+    createButton: {
+        height: 30,
+        width: "auto",
+        backgroundColor: "yellow",
+        borderRadius: 3,
+        borderWidth: 0.5,
+        borderColor: "black",
+        padding: 5,
+        marginRight: 10,
+        marginLeft: 10,
+        marginTop: 5,
+        marginBottom: 5
     }
 });
