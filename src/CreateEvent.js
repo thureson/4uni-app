@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView, Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Event } from './Event.js';
-import { InputField } from './Forms/InputField.js';
 
 export class CreateEvent extends React.Component {
     constructor(props) {
