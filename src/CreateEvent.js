@@ -5,7 +5,7 @@ import { Event } from './Event.js';
 export class CreateEvent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { title: '', description: '', place: '', date: '', time: '', budjet: '' }
+        this.state = { title: '', description: '', place: '', date: '', time: '', budget: '' }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -21,7 +21,7 @@ export class CreateEvent extends React.Component {
                 place: this.state.place,
                 date: this.state.date,
                 time: this.state.time,
-                budjet: Number(this.state.budjet)
+                budget: this.state.budget
             })
         }).catch((error) => {
             console.log(error);
@@ -63,8 +63,8 @@ export class CreateEvent extends React.Component {
 
                         <TextInput
                             style={styles.inputBoxOneRow}
-                            placeholder="Budjet:"
-                            onChangeText={(text) => this.setState({budjet: text})} />
+                            placeholder="Budget:"
+                            onChangeText={(text) => this.setState({budget: text})} />
 
                         <TouchableOpacity 
                             style={styles.submitButton}
