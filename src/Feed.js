@@ -28,6 +28,7 @@ export class Feed extends React.Component {
         });
         Keyboard.dismiss();
         this.textInput.clear();
+        this.setState({ newMessage: '' });
     }
 
     componentDidMount() {
