@@ -55,7 +55,7 @@ export class Feed extends React.Component {
 
     render() {
         return (
-            <View style={{flex: 5, backgroundColor: 'ghostwhite'}}>
+            <View style={{flex: 1, backgroundColor: 'ghostwhite', alignItems: 'center'}}>
                 {/* Header */}
                 <View style={{flex: 0.107, backgroundColor: 'ghostwhite'}}>
                     <View style={styles.container}>
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
       inputBoxOneRow: {
         padding: 10,
         height: 50,
-        width: 250,
+        width: 300,
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",
