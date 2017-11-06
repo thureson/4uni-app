@@ -5,7 +5,7 @@ export class Message extends React.Component {
     render() {
         return (
             <View style={styles.messageContainer}>
-               <Text style={{marginLeft: 15, marginRight: 15}}>{this.props.text}</Text>
+               <Text style={{marginLeft: 15, marginRight: 15}}>{this.props.content}</Text>
             </View>
         );
     }

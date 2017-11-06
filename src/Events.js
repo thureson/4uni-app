@@ -3,6 +3,7 @@ import { View, Text } from "react-native";
 import { SuggestedEvents } from './SuggestedEvents.js';
 import { UpcomingEvents } from './UpcomingEvents.js';
 import eventParser from "../utils/eventParser";
+
 const api = "https://my-database.herokuapp.com/api/events";
 
 export class Events extends React.Component {
