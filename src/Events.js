@@ -14,9 +14,14 @@ export class Events extends React.Component {
             suggestedEvents: []
         };
         this.changeView = this.changeView.bind(this);
+        this.getData = this.getData.bind(this);
     }
 
     componentDidMount() {
+        this.getData();
+    }
+
+    getData() {
         fetch(api)
             .then((response) => response.json())
             .then((responseJson) => {
@@ -25,11 +30,6 @@ export class Events extends React.Component {
                     upcomingEvents: parsedEvents.upcomingEvents,
                     suggestedEvents: parsedEvents.suggestedEvents
                 });
-                console.log("Upcoming events:")
-                console.log(this.state.upcomingEvents);
-                console.log("--------------------")
-                console.log("Suggested events:")
-                console.log(this.state.suggestedEvents);
             })
             .catch((error) => {
                 console.log(error);
@@ -44,7 +44,7 @@ export class Events extends React.Component {
         let pageToShow;
         this.state.upcoming ?
             pageToShow = <UpcomingEvents onPress={this.changeView} events={this.state.upcomingEvents} /> :
-            pageToShow = <SuggestedEvents onPress={this.changeView} events={this.state.suggestedEvents} />
+            pageToShow = <SuggestedEvents onPress={this.changeView} events={this.state.suggestedEvents} update={this.getData} />
 
         return (
             <View style={{ flex: 1 }}>

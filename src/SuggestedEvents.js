@@ -18,6 +18,10 @@ export class SuggestedEvents extends React.Component {
         });
     }
 
+    componentWillMount() {
+        this.props.update()
+    }
+
     renderRow(event) {
         return <Event text={event.name}
             time={event.time}
