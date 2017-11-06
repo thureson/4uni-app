@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, Text, TextInput, View, StyleSheet, FlatList} from 'react-native';
+import {ScrollView, Text, TextInput, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
 import { Message } from './Message.js';
 
 const api = "https://my-database.herokuapp.com/api/feed";
@@ -7,9 +7,24 @@ const api = "https://my-database.herokuapp.com/api/feed";
 export class Feed extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { messages: [] };
+        this.state = { messages: [], newMessage: '' };
         this.getMessages = this.getMessages.bind(this);
         this.update = this.update.bind(this);
+        this.handleNewMessage = this.handleNewMessage.bind(this);
+    }
+
+    handleNewMessage() {
+        fetch("https://my-database.herokuapp.com/api/feed", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                content: this.state.newMessage,
+            })
+        }).catch((error) => {
+            console.log(error);
+        });
     }
 
     componentDidMount() {
@@ -48,10 +63,21 @@ export class Feed extends React.Component {
                     </View>
                 </View>
 
-                <TextInput
-                    style={styles.inputBoxOneRow}
-                    placeholder="Title:"
-                    onChangeText={(text) => this.setState({ title: text })} />
+                <View>
+                    <TextInput
+                        style={styles.inputBoxOneRow}
+                        placeholder="New Message:"
+                        onChangeText={(text) => this.setState({ newMessage: text })} />
+
+                    <TouchableOpacity
+                        style={styles.submitButton}
+                        onPress={this.handleNewMessage}>
+
+                        <Text style={styles.submitText}>
+                            Submit
+                        </Text>
+                    </TouchableOpacity>   
+                </View>
 
                 <FlatList
                     data={this.state.messages}
@@ -85,5 +111,15 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",
+    },
+    submitButton: {
+        height: 40,
+        width: 80,
+        backgroundColor: 'green',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    submitText: {
+        fontWeight: 'bold',
     },
   });
