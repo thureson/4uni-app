@@ -1,8 +1,43 @@
 import React from 'react';
-import {ScrollView, Text, TextInput, View, StyleSheet} from 'react-native';
+import {ScrollView, Text, TextInput, View, StyleSheet, FlatList} from 'react-native';
 import { Message } from './Message.js';
 
+const api = "https://my-database.herokuapp.com/api/feed";
+
 export class Feed extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { messages: [] };
+        this.getMessages = this.getMessages.bind(this);
+        this.update = this.update.bind(this);
+    }
+
+    componentDidMount() {
+        this.getMessages();
+        setInterval(this.update, 1000);
+    }
+
+    update() {
+        this.getMessages();
+    }
+
+    getMessages() {
+        fetch(api)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                this.setState({
+                    messages: responseJson,
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    renderContent(message) {
+        return <Message content={message.content} />;
+    }
+
     render() {
         return (
             <View style={{flex: 5, backgroundColor: 'ghostwhite'}}>
@@ -13,24 +48,16 @@ export class Feed extends React.Component {
                     </View>
                 </View>
 
-                <ScrollView>                  
-                    <View style={{alignItems: 'center'}}>
-                        <TextInput
-                            style={styles.inputBoxOneRow}
-                            placeholder="Title:"
-                            onChangeText={(text) => this.setState({ title: text })} />
+                <TextInput
+                    style={styles.inputBoxOneRow}
+                    placeholder="Title:"
+                    onChangeText={(text) => this.setState({ title: text })} />
 
-                        {/* Test-stuff */}
-                        <Message text="I ma test." />
-                        <Message text="I ma test." />
-                        <Message text="I ma test." />
-                        <Message text="I ma test." />
-                        <Message text="I ma test." />
-                        <Message text="I ma test." />
-                        <Message text="I ma test." />
-                        <Message text="I ma test." />
-                    </View>
-                </ScrollView>
+                <FlatList
+                    data={this.state.messages}
+                    renderItem={({item}) => this.renderContent(item)}
+                    keyExtractor={(item, index) => index}
+                />
             </View>
         );
     }
