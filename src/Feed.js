@@ -30,7 +30,7 @@ export class Feed extends React.Component {
 
     componentDidMount() {
         this.getMessages();
-        intervalId = setInterval(this.update, 1000);
+        intervalId = setInterval(this.update, 500);
     }
 
     componentWillUnmount() {
