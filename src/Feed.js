@@ -3,11 +3,12 @@ import {ScrollView, Text, TextInput, View, StyleSheet, FlatList, TouchableOpacit
 import { Message } from './Message.js';
 
 const api = "https://my-database.herokuapp.com/api/feed";
+var intervalId;
 
 export class Feed extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { messages: [], newMessage: '' };
+        this.state = { messages: [], newMessage: ''};
         this.getMessages = this.getMessages.bind(this);
         this.update = this.update.bind(this);
         this.handleNewMessage = this.handleNewMessage.bind(this);
@@ -29,7 +30,11 @@ export class Feed extends React.Component {
 
     componentDidMount() {
         this.getMessages();
-        setInterval(this.update, 1000);
+        intervalId = setInterval(this.update, 1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(intervalId);
     }
 
     update() {
