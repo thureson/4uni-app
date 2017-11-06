@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, Text, TextInput, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {ScrollView, Text, TextInput, View, StyleSheet, FlatList, TouchableOpacity, Keyboard} from 'react-native';
 import { Message } from './Message.js';
 
 const api = "https://my-database.herokuapp.com/api/feed";
@@ -26,6 +26,8 @@ export class Feed extends React.Component {
         }).catch((error) => {
             console.log(error);
         });
+        Keyboard.dismiss();
+        this.textInput.clear();
     }
 
     componentDidMount() {
@@ -70,6 +72,7 @@ export class Feed extends React.Component {
 
                 <View style={{ flexDirection: 'row', paddingBottom: 2}}>
                     <TextInput
+                        ref={input => { this.textInput = input }}
                         style={styles.inputBoxOneRow}
                         placeholder="New Message:"
                         onChangeText={(text) => this.setState({ newMessage: text })} />
