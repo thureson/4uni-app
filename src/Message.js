@@ -1,7 +1,13 @@
 import React from 'react';
-import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity, LayoutAnimation, UIManager} from 'react-native';
+
+UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationEnabledExperimental(true);
 
 export class Message extends React.Component {
+    componentWillUnmount() {
+        LayoutAnimation.spring();
+    }
+
     render() {
         return (
             <View style={styles.messageContainer}>
@@ -16,7 +22,7 @@ const styles = StyleSheet.create({
       marginLeft: 2,
       marginRight: 2,
       height: 50,
-      width: 250,
+      width: 300,
       justifyContent: 'center',
       backgroundColor: 'lightgreen',
       borderRadius: 10,

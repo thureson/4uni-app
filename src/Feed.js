@@ -1,13 +1,14 @@
 import React from 'react';
-import {ScrollView, Text, TextInput, View, StyleSheet, FlatList, TouchableOpacity} from 'react-native';
+import {ScrollView, Text, TextInput, View, StyleSheet, FlatList, TouchableOpacity, Keyboard} from 'react-native';
 import { Message } from './Message.js';
 
 const api = "https://my-database.herokuapp.com/api/feed";
+var intervalId;
 
 export class Feed extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { messages: [], newMessage: '' };
+        this.state = { messages: [], newMessage: ''};
         this.getMessages = this.getMessages.bind(this);
         this.update = this.update.bind(this);
         this.handleNewMessage = this.handleNewMessage.bind(this);
@@ -25,11 +26,18 @@ export class Feed extends React.Component {
         }).catch((error) => {
             console.log(error);
         });
+        Keyboard.dismiss();
+        this.textInput.clear();
+        this.setState({ newMessage: '' });
     }
 
     componentDidMount() {
         this.getMessages();
-        setInterval(this.update, 1000);
+        intervalId = setInterval(this.update, 500);
+    }
+
+    componentWillUnmount() {
+        clearInterval(intervalId);
     }
 
     update() {
@@ -55,7 +63,7 @@ export class Feed extends React.Component {
 
     render() {
         return (
-            <View style={{flex: 5, backgroundColor: 'ghostwhite'}}>
+            <View style={{flex: 1, backgroundColor: 'ghostwhite', alignItems: 'center'}}>
                 {/* Header */}
                 <View style={{flex: 0.107, backgroundColor: 'ghostwhite'}}>
                     <View style={styles.container}>
@@ -63,8 +71,9 @@ export class Feed extends React.Component {
                     </View>
                 </View>
 
-                <View>
+                <View style={{ flexDirection: 'row', paddingBottom: 2}}>
                     <TextInput
+                        ref={input => { this.textInput = input }}
                         style={styles.inputBoxOneRow}
                         placeholder="New Message:"
                         onChangeText={(text) => this.setState({ newMessage: text })} />
@@ -107,17 +116,19 @@ const styles = StyleSheet.create({
       inputBoxOneRow: {
         padding: 10,
         height: 50,
-        width: 250,
+        width: 220,
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",
     },
     submitButton: {
-        height: 40,
+        height: 50,
         width: 80,
         backgroundColor: 'green',
         alignItems: 'center',
         justifyContent: 'center',
+        borderRadius: 2,
+        borderWidth: 0.5,
     },
     submitText: {
         fontWeight: 'bold',
