@@ -63,7 +63,7 @@ export class Feed extends React.Component {
                     </View>
                 </View>
 
-                <View style={{ flexDirection: 'row' }}>
+                <View style={{ flexDirection: 'row', paddingBottom: 2}}>
                     <TextInput
                         style={styles.inputBoxOneRow}
                         placeholder="New Message:"
@@ -118,6 +118,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'green',
         alignItems: 'center',
         justifyContent: 'center',
+        borderRadius: 2,
+        borderWidth: 0.5,
     },
     submitText: {
         fontWeight: 'bold',
