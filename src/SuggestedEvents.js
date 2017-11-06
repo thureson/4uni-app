@@ -19,7 +19,7 @@ export class SuggestedEvents extends React.Component {
     }
 
     componentWillMount() {
-        this.props.update()
+        //this.props.update()
     }
 
     renderRow(event) {
