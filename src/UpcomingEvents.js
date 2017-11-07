@@ -27,7 +27,6 @@ export class UpcomingEvents extends React.Component {
                 </View>
 
                 {loading}
-
                 <FlatList
                     data={this.props.events}
                     renderItem={({item}) => this.renderRow(item)}

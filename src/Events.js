@@ -12,7 +12,8 @@ export class Events extends React.Component {
         this.state = {
             upcoming: true,
             upcomingEvents: [],
-            suggestedEvents: []
+            suggestedEvents: [],
+            fetching: true
         };
         this.changeView = this.changeView.bind(this);
         this.getData = this.getData.bind(this);
@@ -22,15 +23,23 @@ export class Events extends React.Component {
         this.getData();
     }
 
+    componentWillUnmount() {
+        this.state = {
+            fetching: false
+        }
+    }
+
     getData() {
         fetch(api)
             .then((response) => response.json())
             .then((responseJson) => {
                 var parsedEvents = eventParser(responseJson);
-                this.setState({
-                    upcomingEvents: parsedEvents.upcomingEvents,
-                    suggestedEvents: parsedEvents.suggestedEvents
-                });
+                if (this.state.fetching) {
+                    this.setState({
+                        upcomingEvents: parsedEvents.upcomingEvents,
+                        suggestedEvents: parsedEvents.suggestedEvents
+                    });
+                }
             })
             .catch((error) => {
                 console.log(error);

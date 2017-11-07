@@ -5,7 +5,7 @@ UIManager.setLayoutAnimationEnabledExperimental && UIManager.setLayoutAnimationE
 
 export class Message extends React.Component {
     componentWillUnmount() {
-        LayoutAnimation.spring();
+        //LayoutAnimation.spring();
     }
 
     render() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, Text, View, StyleSheet, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { Event } from './Event.js'
-import { CreateEvent } from "./CreateEvent";
+import {  CreateEvent }  from "./CreateEvent";
 
 export class SuggestedEvents extends React.Component {
     constructor(props) {

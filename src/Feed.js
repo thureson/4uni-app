@@ -1,14 +1,18 @@
 import React from 'react';
-import {ScrollView, Text, TextInput, View, StyleSheet, FlatList, TouchableOpacity, Keyboard} from 'react-native';
+import { ScrollView, Text, TextInput, View, StyleSheet, FlatList, TouchableOpacity, Keyboard, ActivityIndicator } from 'react-native';
 import { Message } from './Message.js';
 
 const api = "https://my-database.herokuapp.com/api/feed";
-var intervalId;
 
 export class Feed extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { messages: [], newMessage: ''};
+        this.state = {
+            initialLoad: true,
+            fetching: false,
+            messages: [],
+            newMessage: ''
+        };
         this.getMessages = this.getMessages.bind(this);
         this.update = this.update.bind(this);
         this.handleNewMessage = this.handleNewMessage.bind(this);
@@ -33,11 +37,14 @@ export class Feed extends React.Component {
 
     componentDidMount() {
         this.getMessages();
-        intervalId = setInterval(this.update, 500);
+        this.state.intervalId = setInterval(this.update, 500);
     }
 
     componentWillUnmount() {
-        clearInterval(intervalId);
+        clearInterval(this.state.intervalId);
+        this.state = {
+            fetching: false
+        };
     }
 
     update() {
@@ -45,12 +52,19 @@ export class Feed extends React.Component {
     }
 
     getMessages() {
+        this.setState({
+            fetching: true
+        });
         fetch(api)
             .then((response) => response.json())
             .then((responseJson) => {
-                this.setState({
-                    messages: responseJson,
-                });
+                if (this.state.fetching) {
+                    this.setState({
+                        messages: responseJson,
+                        initialLoad: false,
+                        fetching: false
+                    });
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -62,16 +76,19 @@ export class Feed extends React.Component {
     }
 
     render() {
+        let loading;
+        if (this.state.initialLoad) {
+            loading = <ActivityIndicator size="large" />
+        }
         return (
-            <View style={{flex: 1, backgroundColor: 'ghostwhite', alignItems: 'center'}}>
+            <View style={{ flex: 1, backgroundColor: 'ghostwhite', alignItems: 'center' }}>
                 {/* Header */}
-                <View style={{flex: 0.107, backgroundColor: 'ghostwhite'}}>
+                <View style={{ flex: 0.107, backgroundColor: 'ghostwhite' }}>
                     <View style={styles.container}>
-                      <Text style={styles.logo} >Feed</Text>
+                        <Text style={styles.logo} >Feed</Text>
                     </View>
                 </View>
-
-                <View style={{ flexDirection: 'row', paddingBottom: 2}}>
+                <View style={{ flexDirection: 'row', paddingBottom: 2 }}>
                     <TextInput
                         ref={input => { this.textInput = input }}
                         style={styles.inputBoxOneRow}
@@ -85,9 +102,11 @@ export class Feed extends React.Component {
                         <Text style={styles.submitText}>
                             Submit
                         </Text>
-                    </TouchableOpacity>   
+                    </TouchableOpacity>
                 </View>
 
+                {loading}
+                {this.state.messages.length === 0 && !this.state.initialLoad && <Text>No messages :-(</Text>}
                 <FlatList
                     data={this.state.messages}
                     renderItem={({item}) => this.renderContent(item)}
@@ -100,20 +119,20 @@ export class Feed extends React.Component {
 
 const styles = StyleSheet.create({
     messageContainer: {
-      height: 50,
-      alignItems: 'center',
-      justifyContent: 'center',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-      },
-      logo: {
+    },
+    logo: {
         fontSize: 22,
         fontWeight: 'bold',
-      },
-      inputBoxOneRow: {
+    },
+    inputBoxOneRow: {
         padding: 10,
         height: 50,
         width: 220,
@@ -133,4 +152,4 @@ const styles = StyleSheet.create({
     submitText: {
         fontWeight: 'bold',
     },
-  });
+});

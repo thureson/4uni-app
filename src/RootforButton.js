@@ -1,15 +1,42 @@
 import React from 'react';
-import { Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 export class RootforButton extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { roots: 0 };
+        this.state = {
+            fetching: true
+        };
+        this.update = this.update.bind(this);
         this.increase = this.increase.bind(this);
     }
 
-    componentWillMount() {
-        this.state.roots = this.props.roots;
+    componentDidMount() {
+        this.update();
+    }
+
+    componentWillUnmount() {
+        this.state = {
+            fetching: false
+        }
+    }
+
+    update() {
+        const api = "https://my-database.herokuapp.com/api/events/" + this.props.id;
+        fetch(api)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                console.log(responseJson);
+                if (this.state.fetching) {
+                    this.setState({
+                        fetching: false,
+                        roots: responseJson.roots
+                    });
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     increase() {
@@ -30,8 +57,17 @@ export class RootforButton extends React.Component {
     }
 
     render() {
+        let loading;
+        if (this.state.fetching) {
+            loading = (
+                <View style={styles.loading}>
+                    <ActivityIndicator />
+                </View>
+            );
+        }
         return (
             <TouchableOpacity style={styles.rootFor} onPress={this.increase}>
+                {loading}
                 <Text>{this.state.roots}</Text>
             </TouchableOpacity>
         );
@@ -50,4 +86,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    loading: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center"
+    }
 });
