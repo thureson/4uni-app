@@ -1,5 +1,5 @@
 ﻿/* Insert pöhinä */ <br />
-[Checkout the database](https://github.com/woltsu/my-database) <br />
+[Checkout the api/~database](https://github.com/woltsu/my-database) <br />
 <br />
 USAGE: <br />
 -npm start <br />
