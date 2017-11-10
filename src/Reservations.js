@@ -3,6 +3,31 @@ import {ScrollView, Text, View, StyleSheet} from 'react-native';
 import {Item} from './Item.js'
 
 export class Reservations extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { fetching: false, items: [] };
+        this.getItems = this.getItems.bind(this);
+    }
+
+    getItems() {
+        this.setState({
+            fetching: true
+        });
+        fetch(api)
+            .then((response) => response.json())
+            .then((responseJson) => {
+                if (this.state.fetching) {
+                    this.setState({
+                        items: responseJson,
+                        fetching: false
+                    });
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     render() {
         return (
             <View style={{flex: 5, backgroundColor: 'white', paddingTop: 1}}>
@@ -13,7 +38,8 @@ export class Reservations extends React.Component {
                     </View>
                 </View>
 
-                <ScrollView>                  
+                <ScrollView>    
+                    <Text>{this.state.items}</Text>               
 
                     {/* Test-stuff */}
                     <Item name="Dancing Shoes" until="21.11" reserved={true}/>

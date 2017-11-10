@@ -2,26 +2,27 @@ import React from 'react';
 import { ScrollView, Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Event } from './Event.js';
 
+var d;
+
 export class CreateReservation extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { name: '', email: '', apartment: '' }
+        d = new Date();
+        this.state = { name: '', reservedTo: d.getDate() }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit() {
-        fetch("https://my-database.herokuapp.com/api/events", {
+        d.setDate(d.getDate() + 7);
+        fetch("https://my-database.herokuapp.com/api/items", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                name: this.state.title,
-                description: this.state.description,
-                place: this.state.place,
-                date: this.state.date,
-                time: this.state.time,
-                budget: this.state.budget
+                name: this.state.name, 
+                isReserved: true, 
+                reservedTo: d.getDate()
             })
         }).catch((error) => {
             console.log(error);
@@ -37,17 +38,6 @@ export class CreateReservation extends React.Component {
                             style={styles.inputBoxOneRow}
                             placeholder="Name:"
                             onChangeText={(text) => this.setState({ name: text })} />
-
-                        <TextInput
-                            style={styles.inputBoxOneRow}
-                            placeholder="email:"
-                            multiline
-                            onChangeText={(text) => this.setState({ email: text })} />
-
-                        <TextInput
-                            style={styles.inputBoxOneRow}
-                            placeholder="Apartment:"
-                            onChangeText={(text) => this.setState({ apartment: text })} />
 
                         <TouchableOpacity
                             style={styles.submitButton}
