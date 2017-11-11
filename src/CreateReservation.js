@@ -6,7 +6,9 @@ export class CreateReservation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: ''
+            name: '',
+            email: '',
+            apartment: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -18,7 +20,10 @@ export class CreateReservation extends React.Component {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                name: this.state.name
+                name: this.state.name,
+                email: this.state.email,
+                apartment: this.state.apartment,
+                item: this.props.item
             })
         }).catch((error) => {
             console.log(error);
@@ -34,6 +39,16 @@ export class CreateReservation extends React.Component {
                             style={styles.inputBoxOneRow}
                             placeholder="Name:"
                             onChangeText={(text) => this.setState({ name: text })} />
+
+                        <TextInput
+                            style={styles.inputBoxOneRow}
+                            placeholder="email:"
+                            onChangeText={(text) => this.setState({ email: text })} />
+
+                        <TextInput
+                            style={styles.inputBoxOneRow}
+                            placeholder="Apartment:"
+                            onChangeText={(text) => this.setState({ apartment: text })} />
 
                         <TouchableOpacity
                             style={styles.submitButton}
@@ -103,7 +118,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'grey',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 50
+        marginTop: 10
     },
     submitText: {
         fontWeight: 'bold',

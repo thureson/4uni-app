@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'grey',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 50
+        marginTop: 10
     },
     submitText: {
         fontWeight: 'bold',

@@ -56,6 +56,7 @@ export class SuggestedEvents extends React.Component {
                 </View>
 
                 {loading}
+                
                 <TouchableOpacity style={styles.createButton} onPress={this.changeView}>
                     <Text>Create an event</Text>
                 </TouchableOpacity>

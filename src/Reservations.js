@@ -1,51 +1,39 @@
 import React from 'react';
-import {ScrollView, Text, View, StyleSheet} from 'react-native';
-import {Item} from './Item.js'
+import { ScrollView, Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { Item } from './Item.js'
 
 export class Reservations extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { fetching: false, items: [] };
-        this.getItems = this.getItems.bind(this);
+        this.renderRow = this.renderRow.bind(this);
     }
 
-    getItems() {
-        this.setState({
-            fetching: true
-        });
-        fetch(api)
-            .then((response) => response.json())
-            .then((responseJson) => {
-                if (this.state.fetching) {
-                    this.setState({
-                        items: responseJson,
-                        fetching: false
-                    });
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    renderRow(item) {
+        return 
+            <Item 
+                name={item.name}
+                isReserved={item.isReserved} />;
     }
 
     render() {
         return (
             <View style={{flex: 5, backgroundColor: 'white', paddingTop: 1}}>
                 {/* Header */}
-                <View style={{flex: 0.107, backgroundColor: 'ghostwhite'}}>
+                <View style={{flex: 0.107, backgroundColor: 'ghostwhite', flexDirection: "row"}}>
                     <View style={styles.container}>
                         <Text style={styles.logo} >Reservations</Text>
+                        
+                        <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
+                            <Text>change</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
 
-                <ScrollView>    
-                    <Text>{this.state.items}</Text>               
-
-                    {/* Test-stuff */}
-                    <Item name="Dancing Shoes" until="21.11" reserved={true}/>
-                    <Item name="Bowling Ball" until="" reserved={false}/>
-                    <Item name="PS4" until="06.11" reserved={true}/>
-                </ScrollView>
+                <FlatList
+                    data={this.props.items}
+                    renderItem={({item}) => this.renderRow(item)}
+                    keyExtractor={(item, index) => index}
+                />
             </View>
         );
     }
@@ -66,4 +54,14 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
       },
+      button: {
+        height: 30,
+        width: "auto",
+        backgroundColor: "yellow",
+        borderRadius: 3,
+        borderWidth: 0.5,
+        borderColor: "black",
+        padding: 5,
+        marginRight: 5
+    },
   });

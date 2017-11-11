@@ -7,9 +7,8 @@ export class Item extends React.Component {
         return (
             <View style={styles.eventContainer}>
                <Text style={{flex: 3, marginLeft: 15}}>{this.props.name}</Text>
-               <Text style={{flex: 1, marginLeft: 15}}>{this.props.until}</Text>
                <Text style={{flex: 1, marginLeft: 15}}></Text>
-               <ReserveButton reserved={this.props.reserved} />
+               <ReserveButton isReserved={this.props.reserved} />
             </View>
         );
     }
