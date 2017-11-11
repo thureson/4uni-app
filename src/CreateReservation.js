@@ -12,14 +12,13 @@ export class CreateReservation extends React.Component {
     }
 
     handleSubmit() {
-        fetch("https://my-database.herokuapp.com/api/items", {
+        fetch("https://my-database.herokuapp.com/api/reservations", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                name: this.state.name,
-                isReserved: true
+                name: this.state.name
             })
         }).catch((error) => {
             console.log(error);
