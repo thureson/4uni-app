@@ -2,27 +2,24 @@ import React from 'react';
 import { ScrollView, Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Event } from './Event.js';
 
-var d;
-
 export class CreateReservation extends React.Component {
     constructor(props) {
         super(props);
-        d = new Date();
-        this.state = { name: '', reservedTo: d.getDate() }
+        this.state = {
+            name: ''
+        }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit() {
-        d.setDate(d.getDate() + 7);
         fetch("https://my-database.herokuapp.com/api/items", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                name: this.state.name, 
-                isReserved: true, 
-                reservedTo: d.getDate()
+                name: this.state.name,
+                isReserved: true
             })
         }).catch((error) => {
             console.log(error);
