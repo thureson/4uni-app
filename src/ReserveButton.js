@@ -16,7 +16,9 @@ export class ReserveButton extends React.Component {
         let reserveState = this.state.reserved ? styles.reserved : styles.available;
 
         return (
-            <TouchableOpacity style={reserveState} onPress={this.handleReserve} />
+            <TouchableOpacity style={reserveState} onPress={this.handleReserve}>
+                <Text style={{ fontWeight: 'bold' }}>Reserve</Text>
+            </TouchableOpacity>
         );
     }
 }
@@ -28,7 +30,7 @@ const styles = StyleSheet.create({
       marginRight: 6,
       backgroundColor: 'mediumseagreen',
       height: 38,
-      width: 38,
+      width: 76,
       borderRadius: 10,
       alignItems: 'center',
       justifyContent: 'center',
@@ -39,7 +41,7 @@ const styles = StyleSheet.create({
         marginRight: 6,
         backgroundColor: 'red',
         height: 38,
-        width: 38,
+        width: 76,
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
