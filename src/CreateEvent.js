@@ -135,6 +135,7 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",
+        backgroundColor: "white",
     },
     inputBoxMultiRow: {
         lineHeight: 20,
@@ -144,6 +145,7 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",
+        backgroundColor: "white",
     },
     submitButton: {
         height: 40,
