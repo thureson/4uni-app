@@ -16,7 +16,7 @@ export class Reservations extends React.Component {
         let loading;
         if (this.props.items.length < 1) {
             loading = (
-                <ActivityIndicator size="large" />
+                <View style={{ paddingTop: 50 }}><ActivityIndicator size="large" /></View>
             );
         }
         return (

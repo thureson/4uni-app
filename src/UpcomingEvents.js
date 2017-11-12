@@ -11,7 +11,7 @@ export class UpcomingEvents extends React.Component {
         let loading;
         if (this.props.events.length < 1) {
             loading = (
-                <ActivityIndicator size="large" />
+                <View style={{ paddingTop: 50 }}><ActivityIndicator size="large" /></View>
             );
         }
         return (
@@ -27,6 +27,7 @@ export class UpcomingEvents extends React.Component {
                 </View>
 
                 {loading}
+                
                 <FlatList
                     data={this.props.events}
                     renderItem={({item}) => this.renderRow(item)}
