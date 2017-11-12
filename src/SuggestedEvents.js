@@ -25,6 +25,7 @@ export class SuggestedEvents extends React.Component {
             date={event.date}
             id={event._id}
             roots={event.roots}
+            place={event.place}
         />;
     }
 
