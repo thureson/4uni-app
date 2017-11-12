@@ -13,6 +13,7 @@ export class SuggestedEvents extends React.Component {
     }
 
     changeView() {
+        this.props.update();
         this.setState({
             showForm: !this.state.showForm
         });
