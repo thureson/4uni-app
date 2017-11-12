@@ -11,7 +11,8 @@ export class Reservable extends React.Component {
         this.state = {
             createForm: false,
             items: [],
-            fetching: true
+            fetching: true,
+            item: []
         };
         this.changeView = this.changeView.bind(this);
         this.getItems = this.getItems.bind(this);
@@ -46,14 +47,14 @@ export class Reservable extends React.Component {
             });
     }
 
-    changeView() {
-        this.setState({ createForm: !this.state.createForm });
+    changeView(item) {
+        this.setState({ createForm: !this.state.createForm, item: item });
     }
 
     render() {
         let pageToShow;
         this.state.createForm ?
-            pageToShow = <CreateReservation onPress={this.changeView} /> :
+            pageToShow = <CreateReservation onPress={this.changeView} item={this.state.item}/> :
             pageToShow = <Reservations onPress={this.changeView} items={this.state.items} update={this.getItems} />
 
         return (

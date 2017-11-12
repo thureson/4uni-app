@@ -6,28 +6,35 @@ export class CreateReservation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '',
+            sender: '',
             email: '',
             apartment: ''
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleGoback = this.handleGoback.bind(this);
     }
 
     handleSubmit() {
-        fetch("https://my-database.herokuapp.com/api/reservations", {
+        fetch("https://my-database.herokuapp.com/api/items", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                name: this.state.name,
+                sender: this.state.sender,
                 email: this.state.email,
                 apartment: this.state.apartment,
-                item: this.props.item
+                _id: this.props.item._id,
+                item: this.props.item.name
             })
         }).catch((error) => {
             console.log(error);
         });
+        this.handleGoback();
+    }
+
+    handleGoback() {
+        this.props.onPress([]);
     }
 
     render() {
@@ -38,7 +45,7 @@ export class CreateReservation extends React.Component {
                         <TextInput
                             style={styles.inputBoxOneRow}
                             placeholder="Name:"
-                            onChangeText={(text) => this.setState({ name: text })} />
+                            onChangeText={(text) => this.setState({ sender: text })} />
 
                         <TextInput
                             style={styles.inputBoxOneRow}
@@ -61,7 +68,7 @@ export class CreateReservation extends React.Component {
 
                         <TouchableOpacity
                             style={styles.goBackButton}
-                            onPress={this.props.onPress}>
+                            onPress={this.handleGoback}>
                             <Text style={styles.submitText}>
                                 Go Back
                             </Text>

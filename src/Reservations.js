@@ -9,7 +9,7 @@ export class Reservations extends React.Component {
     }
 
     renderRow(item) {
-        return <Item name={item.name} isReserved={item.isReserved} />;
+        return <Item name={item.name} isReserved={item.isReserved} onPress={this.props.onPress} item={item} />;
     }
 
     render() {
@@ -25,13 +25,6 @@ export class Reservations extends React.Component {
                 <View style={{flex: 0.107, backgroundColor: 'ghostwhite', flexDirection: "row"}}>
                     <View style={styles.container}>
                         <Text style={styles.logo} >Reservations</Text>
-                        
-                        <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-                            <Text>change</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.button} onPress={this.props.update}>
-                            <Text>update</Text>
-                        </TouchableOpacity>
                     </View>
                 </View>
 

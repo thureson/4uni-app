@@ -7,6 +7,7 @@ export class CreateEvent extends React.Component {
         super(props);
         this.state = { title: '', description: '', place: '', date: '', time: '', budget: '' }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleGoback = this.handleGoback.bind(this);
     }
 
     handleSubmit() {
@@ -26,6 +27,11 @@ export class CreateEvent extends React.Component {
         }).catch((error) => {
             console.log(error);
         });
+        this.handleGoback();
+    }
+
+    handleGoback() {
+        this.props.onPress();
     }
 
     render() {
@@ -76,7 +82,7 @@ export class CreateEvent extends React.Component {
 
                         <TouchableOpacity
                             style={styles.goBackButton}
-                            onPress={this.props.onPress}>
+                            onPress={this.handleGoback}>
                             <Text style={styles.submitText}>
                                 Go Back
                             </Text>
