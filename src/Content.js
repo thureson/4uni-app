@@ -20,8 +20,7 @@ export class Content extends React.Component {
             case 'Reservations':
                 return <Reservable />
             case 'Official':
-                return <CreateReservation />
-                {/*return <Official />*/}
+                return <Official />
             default:
                 return <Feed />
         }

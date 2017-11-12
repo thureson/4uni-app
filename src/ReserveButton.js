@@ -4,7 +4,7 @@ import {Text, StyleSheet, TouchableOpacity} from 'react-native';
 export class ReserveButton extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { reserved: this.props.reserved };
+        this.state = { reserved: this.props.isReserved };
         this.reserve = this.reserve.bind(this);
     }
 

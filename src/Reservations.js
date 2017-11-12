@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { ScrollView, Text, View, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Item } from './Item.js'
 
 export class Reservations extends React.Component {
@@ -10,12 +10,16 @@ export class Reservations extends React.Component {
 
     renderRow(item) {
         return 
-            <Item 
-                name={item.name}
-                isReserved={item.isReserved} />;
+            <Item name={item.name} isReserved={item.isReserved} />;
     }
 
     render() {
+        let loading;
+        if (this.props.items.length < 1) {
+            loading = (
+                <ActivityIndicator size="large" />
+            );
+        }
         return (
             <View style={{flex: 5, backgroundColor: 'white', paddingTop: 1}}>
                 {/* Header */}
@@ -26,8 +30,13 @@ export class Reservations extends React.Component {
                         <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
                             <Text>change</Text>
                         </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={this.props.update}>
+                            <Text>update</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
+
+                {loading}
 
                 <FlatList
                     data={this.props.items}

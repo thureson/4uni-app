@@ -54,7 +54,7 @@ export class Reservable extends React.Component {
         let pageToShow;
         this.state.createForm ?
             pageToShow = <CreateReservation onPress={this.changeView} /> :
-            pageToShow = <Reservations onPress={this.changeView} items={this.state.items} />
+            pageToShow = <Reservations onPress={this.changeView} items={this.state.items} update={this.getItems} />
 
         return (
             <View style={{ flex: 1 }}>
