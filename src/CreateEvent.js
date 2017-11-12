@@ -1,33 +1,41 @@
 import React from 'react';
 import { ScrollView, Text, View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { Event } from './Event.js';
+import eventValidator from "../validators/createEventValidator";
 
 export class CreateEvent extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { title: '', description: '', place: '', date: '', time: '', budget: '' }
+        this.state = { title: '', description: '', place: '', date: '', time: '', budget: '', errors: [] }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleGoback = this.handleGoback.bind(this);
     }
 
     handleSubmit() {
-        fetch("https://my-database.herokuapp.com/api/events", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                name: this.state.title,
-                description: this.state.description,
-                place: this.state.place,
-                date: this.state.date,
-                time: this.state.time,
-                budget: this.state.budget
-            })
-        }).catch((error) => {
-            console.log(error);
+        const errors = eventValidator({
+            ...this.state
         });
-        this.handleGoback();
+        if (errors.length === 0) {
+            fetch("https://my-database.herokuapp.com/api/events", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: this.state.title,
+                    description: this.state.description,
+                    place: this.state.place,
+                    date: this.state.date,
+                    time: this.state.time,
+                    budget: this.state.budget
+                })
+            }).catch((error) => {
+                console.log(error);
+            });
+            this.handleGoback();
+        } else {
+            this.setState({ errors: errors });
+        }
     }
 
     handleGoback() {
@@ -87,6 +95,15 @@ export class CreateEvent extends React.Component {
                                 Go Back
                             </Text>
                         </TouchableOpacity>
+
+                        {
+                            this.state.errors.length > 0 &&
+                            <View>
+                                {this.state.errors.map(function (error, index) {
+                                    return <Text key={index}>{error}</Text>;
+                                })}
+                            </View>
+                        }
                     </View>
                 </View>
             </View>
