@@ -4,7 +4,7 @@ import { UpcomingEvent } from './UpcomingEvent.js'
 
 export class UpcomingEvents extends React.Component {
     renderRow(event) {
-        return <UpcomingEvent text={event.name} time={event.time} date={event.date} />;
+        return <UpcomingEvent event={event} />;
     }
 
     render() {

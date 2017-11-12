@@ -6,9 +6,10 @@ export class UpcomingEvent extends React.Component {
     render() {
         return (
             <View style={styles.eventContainer}>
-               <Text style={{flex: 3, marginLeft: 15}}>{this.props.text}</Text>
-               <Text style={{flex: 1, marginLeft: 15}}>{this.props.time}</Text>
-               <Text style={{flex: 1, marginLeft: 15}}>{this.props.date}</Text>
+               <Text style={{flex: 2, marginLeft: 15}}>{this.props.event.name}</Text>
+               <Text style={{flex: 2, marginLeft: 15}}>{this.props.event.place}</Text>
+               <Text style={{flex: 1, marginLeft: 15}}>{this.props.event.time}</Text>
+               <Text style={{flex: 1, marginLeft: 15}}>{this.props.event.date}</Text>
             </View>
         );
     }
