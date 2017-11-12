@@ -44,69 +44,71 @@ export class CreateEvent extends React.Component {
 
     render() {
         return (
-            <View>
-                <View style={styles.container}>
-                    <View style={styles.inputAreaContainer} >
-                        {/* 'title' is 'name' in db */}
-                        <TextInput
-                            style={styles.inputBoxOneRow}
-                            placeholder="Title:"
-                            onChangeText={(text) => this.setState({ title: text })} />
+            <ScrollView style={{flex: 1}}>
+                <View>
+                    <View style={styles.container}>
+                        <View style={styles.inputAreaContainer} >
+                            {/* 'title' is 'name' in db */}
+                            <TextInput
+                                style={styles.inputBoxOneRow}
+                                placeholder="Title:"
+                                onChangeText={(text) => this.setState({ title: text })} />
 
-                        <TextInput
-                            style={styles.inputBoxMultiRow}
-                            placeholder="Description:"
-                            multiline
-                            onChangeText={(text) => this.setState({ description: text })} />
+                            <TextInput
+                                style={styles.inputBoxMultiRow}
+                                placeholder="Description:"
+                                multiline
+                                onChangeText={(text) => this.setState({ description: text })} />
 
-                        <TextInput
-                            style={styles.inputBoxOneRow}
-                            placeholder="Place:"
-                            onChangeText={(text) => this.setState({ place: text })} />
+                            <TextInput
+                                style={styles.inputBoxOneRow}
+                                placeholder="Place:"
+                                onChangeText={(text) => this.setState({ place: text })} />
 
-                        <TextInput
-                            style={styles.inputBoxOneRow}
-                            placeholder="Date:"
-                            onChangeText={(text) => this.setState({ date: text })} />
+                            <TextInput
+                                style={styles.inputBoxOneRow}
+                                placeholder="Date:"
+                                onChangeText={(text) => this.setState({ date: text })} />
 
-                        <TextInput
-                            style={styles.inputBoxOneRow}
-                            placeholder="Time:"
-                            onChangeText={(text) => this.setState({ time: text })} />
+                            <TextInput
+                                style={styles.inputBoxOneRow}
+                                placeholder="Time:"
+                                onChangeText={(text) => this.setState({ time: text })} />
 
-                        <TextInput
-                            style={styles.inputBoxOneRow}
-                            placeholder="Budget:"
-                            onChangeText={(text) => this.setState({ budget: text })} />
+                            <TextInput
+                                style={styles.inputBoxOneRow}
+                                placeholder="Budget:"
+                                onChangeText={(text) => this.setState({ budget: text })} />
 
-                        <TouchableOpacity
-                            style={styles.submitButton}
-                            onPress={this.handleSubmit}>
+                            <TouchableOpacity
+                                style={styles.submitButton}
+                                onPress={this.handleSubmit}>
 
-                            <Text style={styles.submitText}>
-                                Submit
-                            </Text>
-                        </TouchableOpacity>
+                                <Text style={styles.submitText}>
+                                    Submit
+                                </Text>
+                            </TouchableOpacity>
 
-                        <TouchableOpacity
-                            style={styles.goBackButton}
-                            onPress={this.handleGoback}>
-                            <Text style={styles.submitText}>
-                                Go Back
-                            </Text>
-                        </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.goBackButton}
+                                onPress={this.handleGoback}>
+                                <Text style={styles.submitText}>
+                                    Go Back
+                                </Text>
+                            </TouchableOpacity>
 
-                        {
-                            this.state.errors.length > 0 &&
-                            <View>
-                                {this.state.errors.map(function (error, index) {
-                                    return <Text key={index}>{error}</Text>;
-                                })}
-                            </View>
-                        }
+                            {
+                                this.state.errors.length > 0 &&
+                                <View>
+                                    {this.state.errors.map(function (error, index) {
+                                        return <Text key={index}>{error}</Text>;
+                                    })}
+                                </View>
+                            }
+                        </View>
                     </View>
                 </View>
-            </View>
+            </ScrollView>
         );
     }
 }
