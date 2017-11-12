@@ -9,8 +9,7 @@ export class Reservations extends React.Component {
     }
 
     renderRow(item) {
-        return 
-            <Item name={item.name} isReserved={item.isReserved} />;
+        return <Item name={item.name} isReserved={item.isReserved} />;
     }
 
     render() {
@@ -37,7 +36,6 @@ export class Reservations extends React.Component {
                 </View>
 
                 {loading}
-
                 <FlatList
                     data={this.props.items}
                     renderItem={({item}) => this.renderRow(item)}
@@ -58,6 +56,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: "row"
       },
       logo: {
         fontSize: 22,
