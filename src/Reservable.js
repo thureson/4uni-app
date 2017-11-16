@@ -11,7 +11,7 @@ export class Reservable extends React.Component {
         this.state = {
             createForm: false,
             items: [],
-            fetching: false
+            fetching: true
         };
         this.changeView = this.changeView.bind(this);
         this.getItems = this.getItems.bind(this);
