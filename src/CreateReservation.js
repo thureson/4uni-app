@@ -46,16 +46,19 @@ export class CreateReservation extends React.Component {
                         <TextInput
                             style={styles.inputBoxOneRow}
                             placeholder="Name:"
+                            placeholderTextColor="#787878"
                             onChangeText={(text) => this.setState({ sender: text })} />
 
                         <TextInput
                             style={styles.inputBoxOneRow}
                             placeholder="email:"
+                            placeholderTextColor="#787878"
                             onChangeText={(text) => this.setState({ email: text })} />
 
                         <TextInput
                             style={styles.inputBoxOneRow}
                             placeholder="Apartment:"
+                            placeholderTextColor="#787878"
                             onChangeText={(text) => this.setState({ apartment: text })} />
 
                         <TouchableOpacity

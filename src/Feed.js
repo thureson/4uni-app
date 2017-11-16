@@ -104,6 +104,7 @@ export class Feed extends React.Component {
                             ref={input => { this.textInput = input }}
                             style={styles.inputBoxOneRow}
                             placeholder="New Message:"
+                            placeholderTextColor="#787878"
                             onChangeText={(text) => this.setState({ newMessage: text })} />
 
                         <TouchableOpacity
@@ -120,7 +121,7 @@ export class Feed extends React.Component {
                         this.state.errors.length > 0 &&
                         <View>
                             {this.state.errors.map(function (error, index) {
-                                return <Text key={index} style={{color: "red"}}>{error}</Text>;
+                                return <Text key={index} style={{ color: "red" }}>{error}</Text>;
                             })}
                         </View>
                     }
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",
-        backgroundColor: "rgba(255,255,255,0.8)",
+        backgroundColor: "rgba(255,255,255,0.8)"
     },
     submitButton: {
         height: 50,

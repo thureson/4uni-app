@@ -44,41 +44,47 @@ export class CreateEvent extends React.Component {
 
     render() {
         return (
-            <ScrollView style={{flex: 1}}>
+            <ScrollView style={{ flex: 1 }}>
                 <View>
                     <View style={styles.container}>
                         <View style={styles.inputAreaContainer} >
                             {/* 'title' is 'name' in db */}
-                            <View style={{paddingTop: 15}} />
+                            <View style={{ paddingTop: 15 }} />
                             <TextInput
                                 style={styles.inputBoxOneRow}
                                 placeholder="Title:"
+                                placeholderTextColor="#787878"
                                 onChangeText={(text) => this.setState({ title: text })} />
 
                             <TextInput
                                 style={styles.inputBoxMultiRow}
                                 placeholder="Description:"
                                 multiline
+                                placeholderTextColor="#787878"
                                 onChangeText={(text) => this.setState({ description: text })} />
 
                             <TextInput
                                 style={styles.inputBoxOneRow}
                                 placeholder="Place:"
+                                placeholderTextColor="#787878"
                                 onChangeText={(text) => this.setState({ place: text })} />
 
                             <TextInput
                                 style={styles.inputBoxOneRow}
                                 placeholder="Date:"
+                                placeholderTextColor="#787878"
                                 onChangeText={(text) => this.setState({ date: text })} />
 
                             <TextInput
                                 style={styles.inputBoxOneRow}
                                 placeholder="Time:"
+                                placeholderTextColor="#787878"
                                 onChangeText={(text) => this.setState({ time: text })} />
 
                             <TextInput
                                 style={styles.inputBoxOneRow}
                                 placeholder="Budget:"
+                                placeholderTextColor="#787878"
                                 onChangeText={(text) => this.setState({ budget: text })} />
 
                             <TouchableOpacity
