@@ -7,7 +7,7 @@ module.exports = function (message) {
 }
 
 function validateMessage(message) {
-    if (message.length < 1 || message === null || message.length > 50) {
-        result.push("Message's length must be equal or between 1 and 50");
+    if (message.length < 1 || message === null || message.length > 100) {
+        result.push("Message's length must be equal or between 1 and 100");
     }
 }
