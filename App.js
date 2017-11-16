@@ -2,11 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Alert, TextInput } from 'react-native';
 import {NavBar} from './src/NavBar.js';
 import {Content} from './src/Content.js';
+import {Origin} from './src/Origin.js';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { page: 'Feed' };
+    this.state = { page: '' };
     this._handleButtonPress = this._handleButtonPress.bind(this);
   }
 
@@ -17,17 +18,20 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={{flex: 1}}>
-
+        
         {/* Phone's own info-space */}
-        <View style={{height: 20, backgroundColor: 'skyblue'}}></View>
+        <View style={{height: 20, backgroundColor: '#564b4b'}} />
 
         {/* Page-content */}
-        <View style={{flex: 6.2}}>
-            <Content page={this.state.page}/>
-        </View>
-        
-        {/* Navigator on bottom screen */}
         <View style={{flex: 1}}>
+            <Content page={this.state.page} 
+                     onHomeButtonPress={() => this._handleButtonPress("Feed")} 
+                     onEventsButtonPress={() => this._handleButtonPress("Events")} 
+                     onReservationsButtonPress={() => this._handleButtonPress("Reservations")} 
+                     onOfficialButtonPress={() => this._handleButtonPress("Official")}/>
+        </View>   
+        
+        <View style={{height: 60}}>
           <NavBar onHomeButtonPress={() => this._handleButtonPress("Feed")} 
                   onEventsButtonPress={() => this._handleButtonPress("Events")} 
                   onReservationsButtonPress={() => this._handleButtonPress("Reservations")} 

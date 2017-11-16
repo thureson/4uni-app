@@ -21,9 +21,12 @@ export class Content extends React.Component {
             case 'Reservations':
                 return <Reservable />
             case 'Official':
-                return <Origin />
+                return <Official />
             default:
-                return <Feed />
+                return <Origin  onHomeButtonPress={this.props.onHomeButtonPress}
+                                onEventsButtonPress={this.props.onEventsButtonPress}
+                                onReservationsButtonPress={this.props.onReservationsButtonPress}
+                                onOfficialButtonPress={this.props.onOfficialButtonPress} />
         }
     }
 
