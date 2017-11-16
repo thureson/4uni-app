@@ -5,10 +5,10 @@ export class Origin extends React.Component {
     render() {
         var d = Dimensions.get("screen");
         return (
-            <View style={{flex: 1, backgroundColor: "#aeb0b2"}}>
+            <View style={{flex: 1, backgroundColor: "rgba(0,0,0,0)"}}>
                 <View style={{height: 47}} >
                     <Image
-                        style={{flex:1, height: undefined, width: undefined}}
+                        style={{flex:1, height: undefined, width: undefined, backgroundColor: 'rgba(37,40,36,0.9)'}}
                         source={require('../pics/header.png')}
                         resizeMode="stretch"
                         />
@@ -22,6 +22,7 @@ export class Origin extends React.Component {
                                     style={{flex:1, height: undefined, width: undefined}}
                                     source={require('../pics/reserve2.png')}
                                     resizeMode="stretch"
+                                    opacity={0.7}
                                     />
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.reserveButton} onPress={this.props.onReservationsButtonPress}>
@@ -29,6 +30,7 @@ export class Origin extends React.Component {
                                     style={{flex:1, height: undefined, width: undefined}}
                                     source={require('../pics/varaa2.png')}
                                     resizeMode="stretch"
+                                    opacity={0.7}
                                     />
                             </TouchableOpacity>
                         </View>
@@ -39,6 +41,7 @@ export class Origin extends React.Component {
                                     style={{flex:1, height: undefined, width: undefined}}
                                     source={require('../pics/prof2.png')}
                                     resizeMode="stretch"
+                                    opacity={0.7}
                                     />
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.reserveButton} onPress={this.props.onEventsButtonPress}>
@@ -46,6 +49,7 @@ export class Origin extends React.Component {
                                     style={{flex:1, height: undefined, width: undefined}}
                                     source={require('../pics/event2.png')}
                                     resizeMode="stretch"
+                                    opacity={0.7}
                                     />
                             </TouchableOpacity>
                         </View>
@@ -56,6 +60,7 @@ export class Origin extends React.Component {
                                     style={{flex: 1, height: undefined, width: d.width-6 }}
                                     source={require('../pics/official.png')}
                                     resizeMode="stretch"
+                                    opacity={0.7}
                                     />
                             </TouchableOpacity>
                         </View>
@@ -71,7 +76,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignSelf: "stretch",
         alignItems: "center",
-        backgroundColor: "#aeb0b2",
     },
     reserveButton: {
         flex: 1,
@@ -89,7 +93,6 @@ const styles = StyleSheet.create({
     },
     menuRow: {
         flex: 1,
-        paddingTop: 2,
         flexDirection: "row",
     },
 });

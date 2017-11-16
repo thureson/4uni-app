@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, Text, View, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
-import { Item } from './Item.js'
+import { Item } from './Item.js';
+import { BackgroundImage } from './BackgroundImage.js';
 
 export class Reservations extends React.Component {
     constructor(props) {
@@ -21,12 +22,12 @@ export class Reservations extends React.Component {
         }
         return (
             <View style={{flex: 1}}>
-                <View style={{height: 47, backgroundColor: 'ghostwhite'}} >
+                <View style={{height: 47, backgroundColor: 'rgba(0,0,0,0)'}} >
                     <View style={styles.container}>
                         <Text style={styles.logo} >Reservations</Text>
                     </View>
                 </View>  
-                <View style={{flex: 5, backgroundColor: 'white', paddingTop: 1}}>
+                <View style={{flex: 5, backgroundColor: 'rgba(0,0,0,0)', paddingTop: 1}}>
 
                     {loading}
                     <FlatList
@@ -55,6 +56,7 @@ const styles = StyleSheet.create({
       logo: {
         fontSize: 22,
         fontWeight: 'bold',
+        color: 'rgba(255,255,255,0.8)'
       },
       button: {
         height: 30,

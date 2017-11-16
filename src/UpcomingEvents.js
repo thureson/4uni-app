@@ -16,15 +16,15 @@ export class UpcomingEvents extends React.Component {
         }
         return (
             <View style={{flex: 1}}>
-                <View style={{height: 47, backgroundColor: 'ghostwhite'}} >
+                <View style={{height: 47, backgroundColor: 'rgba(0,0,0,0)'}} >
                     <View style={styles.container}>
                         <Text style={styles.logo} >Upcoming Events</Text>
                         <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-                            <Text>change</Text>
+                            <Text style={{color: 'rgba(255,255,255,0.8)'}}>  ->  </Text>
                         </TouchableOpacity>
                     </View>
                 </View>  
-                <View style={{ flex: 1, backgroundColor: 'white', paddingTop: 1 }}>
+                <View style={{ flex: 1, backgroundColor: 'rgba(0,0,0,0)', paddingTop: 1 }}>
 
                     {loading}
                     
@@ -54,12 +54,14 @@ const styles = StyleSheet.create({
     logo: {
         fontSize: 22,
         fontWeight: 'bold',
-        marginLeft: 10
+        marginLeft: 10,
+        backgroundColor: 'rgba(0,0,0,0)',
+        color: 'rgba(255,255,255,0.8)'
     },
     button: {
         height: 30,
         width: "auto",
-        backgroundColor: "yellow",
+        backgroundColor: 'rgba(238,255,50,0.6)',
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",

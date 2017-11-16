@@ -6,7 +6,7 @@ export class NavButton extends React.Component {
         return (
           <TouchableOpacity style={{flex: 1, backgroundColor: this.props.backcolor}} onPress={this.props.onButtonPress}>
             <View style={styles.buttonText}>
-              <Text>{this.props.texts}</Text>
+              <Text style={{color: 'white'}}>{this.props.texts}</Text>
             </View>
           </TouchableOpacity>
         )

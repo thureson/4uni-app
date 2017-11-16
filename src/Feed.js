@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView, Text, TextInput, View, StyleSheet, FlatList, TouchableOpacity, Keyboard, ActivityIndicator } from 'react-native';
 import { Message } from './Message.js';
+import { BackgroundImage } from './BackgroundImage.js';
 
 const api = "https://my-database.herokuapp.com/api/feed";
 
@@ -72,7 +73,7 @@ export class Feed extends React.Component {
     }
 
     renderContent(message) {
-        return <Message content={message.content} />;
+        return <Message style={{paddingTop: 3}} content={message.content} />;
     }
 
     render() {
@@ -82,12 +83,12 @@ export class Feed extends React.Component {
         }
         return (
             <View style={{flex: 1}}>
-                <View style={{height: 47, backgroundColor: 'ghostwhite'}} >
+                <View style={{height: 47, backgroundColor: 'rgba(0,0,0,0)'}} >
                     <View style={styles.container}>
                         <Text style={styles.logo} >Feed</Text>
                     </View>
                 </View>  
-                <View style={{ flex: 1, backgroundColor: 'ghostwhite', alignItems: 'center' }}>
+                <View style={{ flex: 1, /*backgroundColor: 'ghostwhite',*/ alignItems: 'center', paddingTop: 5 }}>
                     <View style={{ flexDirection: 'row', paddingBottom: 2 }}>
                         <TextInput
                             ref={input => { this.textInput = input }}
@@ -106,8 +107,9 @@ export class Feed extends React.Component {
                     </View>
 
                     {loading}
-                    {this.state.messages.length === 0 && !this.state.initialLoad && <Text style={{ paddingTop: 55 }}>No messages</Text>}
+                    {this.state.messages.length === 0 && !this.state.initialLoad && <Text style={{ paddingTop: 55, backgroundColor: 'rgba(0,0,0,0)', color: 'white' }}>No messages</Text>}
                     <FlatList
+                        style={{paddingTop: 3}}
                         data={this.state.messages}
                         renderItem={({item}) => this.renderContent(item)}
                         keyExtractor={(item, index) => index}
@@ -132,6 +134,8 @@ const styles = StyleSheet.create({
     logo: {
         fontSize: 22,
         fontWeight: 'bold',
+        backgroundColor: 'rgba(0,0,0,0)',
+        color: 'white'
     },
     inputBoxOneRow: {
         padding: 10,
@@ -140,12 +144,12 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",
-        backgroundColor: "white",
+        backgroundColor: "rgba(255,255,255,0.8)",
     },
     submitButton: {
         height: 50,
         width: 80,
-        backgroundColor: 'mediumseagreen',
+        backgroundColor: 'rgba(55,91,44,0.8)',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 2,
@@ -153,5 +157,6 @@ const styles = StyleSheet.create({
     },
     submitText: {
         fontWeight: 'bold',
+        color: 'rgba(255,255,255,0.8)'
     },
 });

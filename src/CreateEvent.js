@@ -49,6 +49,7 @@ export class CreateEvent extends React.Component {
                     <View style={styles.container}>
                         <View style={styles.inputAreaContainer} >
                             {/* 'title' is 'name' in db */}
+                            <View style={{paddingTop: 15}} />
                             <TextInput
                                 style={styles.inputBoxOneRow}
                                 placeholder="Title:"
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",
-        backgroundColor: "white",
+        backgroundColor: 'rgba(255,255,255,0.8)',
     },
     inputBoxMultiRow: {
         lineHeight: 20,
@@ -145,24 +146,25 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",
-        backgroundColor: "white",
+        backgroundColor: 'rgba(255,255,255,0.8)',
     },
     submitButton: {
         height: 40,
         width: 80,
-        backgroundColor: 'green',
+        backgroundColor: 'rgba(55,91,44,0.8)',
         alignItems: 'center',
         justifyContent: 'center',
     },
     goBackButton: {
         height: 40,
         width: 80,
-        backgroundColor: 'grey',
+        backgroundColor: 'rgba(136, 145, 133, 0.8)',
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 10
     },
     submitText: {
         fontWeight: 'bold',
+        color: 'rgba(255, 255, 255, 0.8)'
     },
 });

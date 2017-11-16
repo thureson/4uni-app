@@ -68,7 +68,7 @@ export class RootforButton extends React.Component {
         return (
             <TouchableOpacity style={styles.rootFor} onPress={this.increase}>
                 {loading}
-                <Text>{this.state.roots}</Text>
+                <Text style={{color: 'rgba(255,255,255,0.8)'}}>{this.state.roots}</Text>
             </TouchableOpacity>
         );
     }
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         marginTop: 6,
         marginBottom: 6,
         marginRight: 6,
-        backgroundColor: 'mediumseagreen',
+        backgroundColor: 'rgba(55,91,44,0.8)',
         height: 38,
         width: 38,
         borderRadius: 10,
@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     },
     loading: {
         flex: 1,
+        paddingTop: 15,
         alignItems: "center",
         justifyContent: "center"
     }
