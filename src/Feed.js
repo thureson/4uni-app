@@ -78,7 +78,7 @@ export class Feed extends React.Component {
     render() {
         let loading;
         if (this.state.initialLoad) {
-            loading = <ActivityIndicator size="large" />
+            loading = <View style={{ paddingTop: 50 }}><ActivityIndicator size="large" /></View>
         }
         return (
             <View style={{ flex: 1, backgroundColor: 'ghostwhite', alignItems: 'center' }}>
@@ -106,7 +106,7 @@ export class Feed extends React.Component {
                 </View>
 
                 {loading}
-                {this.state.messages.length === 0 && !this.state.initialLoad && <Text>No messages :-(</Text>}
+                {this.state.messages.length === 0 && !this.state.initialLoad && <Text style={{ paddingTop: 55 }}>No messages</Text>}
                 <FlatList
                     data={this.state.messages}
                     renderItem={({item}) => this.renderContent(item)}
@@ -139,11 +139,12 @@ const styles = StyleSheet.create({
         borderRadius: 3,
         borderWidth: 0.5,
         borderColor: "black",
+        backgroundColor: "white",
     },
     submitButton: {
         height: 50,
         width: 80,
-        backgroundColor: 'green',
+        backgroundColor: 'mediumseagreen',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 2,

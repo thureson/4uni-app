@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, Text, View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { ScrollView, Text, View, StyleSheet, FlatList, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { Item } from './Item.js'
 
 export class Reservations extends React.Component {
@@ -9,26 +9,26 @@ export class Reservations extends React.Component {
     }
 
     renderRow(item) {
-        return 
-            <Item 
-                name={item.name}
-                isReserved={item.isReserved} />;
+        return <Item name={item.name} isReserved={item.isReserved} onPress={this.props.onPress} item={item} />;
     }
 
     render() {
+        let loading;
+        if (this.props.items.length < 1) {
+            loading = (
+                <View style={{ paddingTop: 50 }}><ActivityIndicator size="large" /></View>
+            );
+        }
         return (
             <View style={{flex: 5, backgroundColor: 'white', paddingTop: 1}}>
                 {/* Header */}
                 <View style={{flex: 0.107, backgroundColor: 'ghostwhite', flexDirection: "row"}}>
                     <View style={styles.container}>
                         <Text style={styles.logo} >Reservations</Text>
-                        
-                        <TouchableOpacity style={styles.button} onPress={this.props.onPress}>
-                            <Text>change</Text>
-                        </TouchableOpacity>
                     </View>
                 </View>
 
+                {loading}
                 <FlatList
                     data={this.props.items}
                     renderItem={({item}) => this.renderRow(item)}
@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: "row"
       },
       logo: {
         fontSize: 22,

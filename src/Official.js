@@ -14,11 +14,19 @@ export class Official extends React.Component {
 
                 <View style={styles.stuffContainer}>
                     <Text>
+                        Questions?
+                    </Text>
+                    <Text>
+                        tom.thureson@gmail.com
+                    </Text>
+                    {/*
+                    <Text>
                         Official stuff here.
                     </Text>
                     <Text>
                         Be aware!
                     </Text>
+                    */}
                 </View>
             </View>
         );

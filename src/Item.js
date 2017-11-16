@@ -8,7 +8,7 @@ export class Item extends React.Component {
             <View style={styles.eventContainer}>
                <Text style={{flex: 3, marginLeft: 15}}>{this.props.name}</Text>
                <Text style={{flex: 1, marginLeft: 15}}></Text>
-               <ReserveButton isReserved={this.props.reserved} />
+               <ReserveButton isReserved={this.props.reserved} onPress={this.props.onPress} item={this.props.item} />
             </View>
         );
     }

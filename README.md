@@ -6,7 +6,8 @@ USAGE: <br />
 -Expo-client on phone <br />
 <br />
 <br />
+[Play Store: ](https://play.google.com/store/apps/details?id=com.Apartmate.apartmate) <br />
+<br />
+<br />
 BUGS: <br />
--Root for events, go back to upcomingEvents, come back -> new roots showing <br />
--Budjet not going to database when using form <br />
--Feed.js perii Messagejen animaatiot
+none

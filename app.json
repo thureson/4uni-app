@@ -1,5 +1,15 @@
 {
-  "expo": {
-    "sdkVersion": "21.0.0"
-  }
-}
+   "expo": {
+    "name": "Apartmate",
+    "icon": "./apartmateIcon.png",
+    "version": "1.0.0",
+    "slug": "Communities",
+    "sdkVersion": "21.0.0",
+    "ios": {
+      "bundleIdentifier": "com.Apartmate.apartmate"
+    },
+    "android": {
+      "package": "com.Apartmate.apartmate"
+    }
+   }
+ }

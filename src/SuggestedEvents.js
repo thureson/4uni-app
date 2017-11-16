@@ -13,13 +13,10 @@ export class SuggestedEvents extends React.Component {
     }
 
     changeView() {
+        this.props.update();
         this.setState({
             showForm: !this.state.showForm
         });
-    }
-
-    componentWillMount() {
-        //this.props.update()
     }
 
     renderRow(event) {
@@ -28,6 +25,7 @@ export class SuggestedEvents extends React.Component {
             date={event.date}
             id={event._id}
             roots={event.roots}
+            place={event.place}
         />;
     }
 
@@ -35,7 +33,7 @@ export class SuggestedEvents extends React.Component {
         let loading;
         if (this.props.events.length < 1) {
             loading = (
-                <ActivityIndicator size="large" />
+                <View style={{ paddingTop: 50 }}><ActivityIndicator size="large" /></View>
             );
         }
 
@@ -55,8 +53,8 @@ export class SuggestedEvents extends React.Component {
                     </View>
                 </View>
 
-                {loading}
-                
+                {loading}     
+                         
                 <TouchableOpacity style={styles.createButton} onPress={this.changeView}>
                     <Text>Create an event</Text>
                 </TouchableOpacity>

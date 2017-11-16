@@ -5,6 +5,7 @@ import { Events } from './Events.js';
 import { Reservations } from './Reservations.js';
 import { Official } from './Official.js';
 import { Reservable } from './Reservable.js';
+import { Origin } from './Origin.js';
 
 import { CreateEvent } from './CreateEvent.js';
 import { CreateReservation } from './CreateReservation.js';
@@ -20,8 +21,7 @@ export class Content extends React.Component {
             case 'Reservations':
                 return <Reservable />
             case 'Official':
-                return <CreateReservation />
-                {/*return <Official />*/}
+                return <Origin />
             default:
                 return <Feed />
         }
