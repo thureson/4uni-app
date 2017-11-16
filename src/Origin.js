@@ -5,7 +5,7 @@ export class Origin extends React.Component {
     render() {
         var d = Dimensions.get("screen");
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: "#aeb0b2"}}>
                 <View style={{height: 47}} >
                     <Image
                         style={{flex:1, height: undefined, width: undefined}}

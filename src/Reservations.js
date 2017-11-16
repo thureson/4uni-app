@@ -20,20 +20,21 @@ export class Reservations extends React.Component {
             );
         }
         return (
-            <View style={{flex: 5, backgroundColor: 'white', paddingTop: 1}}>
-                {/* Header */}
-                <View style={{flex: 0.107, backgroundColor: 'ghostwhite', flexDirection: "row"}}>
+            <View style={{flex: 1}}>
+                <View style={{height: 47, backgroundColor: 'ghostwhite'}} >
                     <View style={styles.container}>
                         <Text style={styles.logo} >Reservations</Text>
                     </View>
-                </View>
+                </View>  
+                <View style={{flex: 5, backgroundColor: 'white', paddingTop: 1}}>
 
-                {loading}
-                <FlatList
-                    data={this.props.items}
-                    renderItem={({item}) => this.renderRow(item)}
-                    keyExtractor={(item, index) => index}
-                />
+                    {loading}
+                    <FlatList
+                        data={this.props.items}
+                        renderItem={({item}) => this.renderRow(item)}
+                        keyExtractor={(item, index) => index}
+                    />
+                </View>
             </View>
         );
     }

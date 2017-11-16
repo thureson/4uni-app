@@ -9,7 +9,7 @@ export class NavBar extends React.Component {
           <NavButton onButtonPress={this.props.onHomeButtonPress} texts='Feed' />
           <NavButton onButtonPress={this.props.onEventsButtonPress} texts='Events' />
           <NavButton onButtonPress={this.props.onReservationsButtonPress} texts='Reserve' />
-          <NavButton onButtonPress={this.props.onOfficialButtonPress} texts='Official' />
+          <NavButton onButtonPress={this.props.onOfficialButtonPress} texts='Menu' />
         </View>
         )
     }

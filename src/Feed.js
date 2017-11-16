@@ -81,37 +81,38 @@ export class Feed extends React.Component {
             loading = <View style={{ paddingTop: 50 }}><ActivityIndicator size="large" /></View>
         }
         return (
-            <View style={{ flex: 1, backgroundColor: 'ghostwhite', alignItems: 'center' }}>
-                {/* Header */}
-                <View style={{ flex: 0.107, backgroundColor: 'ghostwhite' }}>
+            <View style={{flex: 1}}>
+                <View style={{height: 47, backgroundColor: 'ghostwhite'}} >
                     <View style={styles.container}>
                         <Text style={styles.logo} >Feed</Text>
                     </View>
+                </View>  
+                <View style={{ flex: 1, backgroundColor: 'ghostwhite', alignItems: 'center' }}>
+                    <View style={{ flexDirection: 'row', paddingBottom: 2 }}>
+                        <TextInput
+                            ref={input => { this.textInput = input }}
+                            style={styles.inputBoxOneRow}
+                            placeholder="New Message:"
+                            onChangeText={(text) => this.setState({ newMessage: text })} />
+
+                        <TouchableOpacity
+                            style={styles.submitButton}
+                            onPress={this.handleNewMessage}>
+
+                            <Text style={styles.submitText}>
+                                Submit
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
+
+                    {loading}
+                    {this.state.messages.length === 0 && !this.state.initialLoad && <Text style={{ paddingTop: 55 }}>No messages</Text>}
+                    <FlatList
+                        data={this.state.messages}
+                        renderItem={({item}) => this.renderContent(item)}
+                        keyExtractor={(item, index) => index}
+                    />
                 </View>
-                <View style={{ flexDirection: 'row', paddingBottom: 2 }}>
-                    <TextInput
-                        ref={input => { this.textInput = input }}
-                        style={styles.inputBoxOneRow}
-                        placeholder="New Message:"
-                        onChangeText={(text) => this.setState({ newMessage: text })} />
-
-                    <TouchableOpacity
-                        style={styles.submitButton}
-                        onPress={this.handleNewMessage}>
-
-                        <Text style={styles.submitText}>
-                            Submit
-                        </Text>
-                    </TouchableOpacity>
-                </View>
-
-                {loading}
-                {this.state.messages.length === 0 && !this.state.initialLoad && <Text style={{ paddingTop: 55 }}>No messages</Text>}
-                <FlatList
-                    data={this.state.messages}
-                    renderItem={({item}) => this.renderContent(item)}
-                    keyExtractor={(item, index) => index}
-                />
             </View>
         );
     }

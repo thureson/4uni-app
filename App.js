@@ -19,7 +19,7 @@ export default class App extends React.Component {
     return (
       <View style={{flex: 1}}>
         
-        {/* Phone's own info-space */}
+        {/* Phone's own info-spac */}
         <View style={{height: 20, backgroundColor: '#564b4b'}} />
 
         {/* Page-content */}
