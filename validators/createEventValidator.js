@@ -26,7 +26,7 @@ function validateDescription(description) {
 }
 
 function validatePlace(place) {
-    if (place.length <= 3 || place === null) {
+    if (place.length < 3 || place === null) {
         result.push("Event's place is too short!");
     } else if (place.length > 15) {
         result.push("Event's place is too long!");

@@ -2,6 +2,7 @@ import React from 'react';
 import { ScrollView, Text, TextInput, View, StyleSheet, FlatList, TouchableOpacity, Keyboard, ActivityIndicator } from 'react-native';
 import { Message } from './Message.js';
 import { BackgroundImage } from './BackgroundImage.js';
+import createMessageValidator from "../validators/createMessageValidator";
 
 const api = "https://my-database.herokuapp.com/api/feed";
 
@@ -12,7 +13,8 @@ export class Feed extends React.Component {
             initialLoad: true,
             fetching: false,
             messages: [],
-            newMessage: ''
+            newMessage: '',
+            errors: []
         };
         this.getMessages = this.getMessages.bind(this);
         this.update = this.update.bind(this);
@@ -20,20 +22,28 @@ export class Feed extends React.Component {
     }
 
     handleNewMessage() {
-        fetch("https://my-database.herokuapp.com/api/feed", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                content: this.state.newMessage,
-            })
-        }).catch((error) => {
-            console.log(error);
+        const errors = createMessageValidator({
+            newMessage: this.state.newMessage
         });
-        Keyboard.dismiss();
-        this.textInput.clear();
-        this.setState({ newMessage: '' });
+        if (errors.length === 0) {
+            fetch("https://my-database.herokuapp.com/api/feed", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    content: this.state.newMessage,
+                })
+            }).catch((error) => {
+                console.log(error);
+            });
+            Keyboard.dismiss();
+            this.textInput.clear();
+            this.setState({ newMessage: '' });
+        }
+        this.setState({
+            errors: errors
+        });
     }
 
     componentDidMount() {
@@ -73,7 +83,7 @@ export class Feed extends React.Component {
     }
 
     renderContent(message) {
-        return <Message style={{paddingTop: 3}} content={message.content} />;
+        return <Message style={{ paddingTop: 3 }} content={message.content} />;
     }
 
     render() {
@@ -82,12 +92,12 @@ export class Feed extends React.Component {
             loading = <View style={{ paddingTop: 50 }}><ActivityIndicator size="large" /></View>
         }
         return (
-            <View style={{flex: 1}}>
-                <View style={{height: 47, backgroundColor: 'rgba(0,0,0,0)'}} >
+            <View style={{ flex: 1 }}>
+                <View style={{ height: 47, backgroundColor: 'rgba(0,0,0,0)' }} >
                     <View style={styles.container}>
                         <Text style={styles.logo} >Feed</Text>
                     </View>
-                </View>  
+                </View>
                 <View style={{ flex: 1, /*backgroundColor: 'ghostwhite',*/ alignItems: 'center', paddingTop: 5 }}>
                     <View style={{ flexDirection: 'row', paddingBottom: 2 }}>
                         <TextInput
@@ -106,10 +116,19 @@ export class Feed extends React.Component {
                         </TouchableOpacity>
                     </View>
 
+                    {
+                        this.state.errors.length > 0 &&
+                        <View>
+                            {this.state.errors.map(function (error, index) {
+                                return <Text key={index} style={{color: "red"}}>{error}</Text>;
+                            })}
+                        </View>
+                    }
+
                     {loading}
                     {this.state.messages.length === 0 && !this.state.initialLoad && <Text style={{ paddingTop: 55, backgroundColor: 'rgba(0,0,0,0)', color: 'white' }}>No messages</Text>}
                     <FlatList
-                        style={{paddingTop: 3}}
+                        style={{ paddingTop: 3 }}
                         data={this.state.messages}
                         renderItem={({item}) => this.renderContent(item)}
                         keyExtractor={(item, index) => index}
